@@ -5,6 +5,11 @@ export type Localized = { fr: string; en: string }
 
 export type Credit = { label: Localized; value: string }
 
+export type Video = {
+  embedUrl: string
+  watchUrl: string
+}
+
 export type Work = {
   slug: string
   medium: Medium
@@ -18,7 +23,7 @@ export type Work = {
   body: Localized[]
   credits: Credit[]
   partners?: string[]
-  videoUrl?: string
+  video?: Video
   cover: string
   gallery: readonly string[]
   ratio: 'wide' | 'portrait'
@@ -60,7 +65,10 @@ export const works: Work[] = [
       { label: { fr: 'Année', en: 'Year' }, value: '2025' },
     ],
     partners: ['Nordic Development Fund', 'World Bank', 'WACA — West Africa Coastal Areas'],
-    videoUrl: '',
+    video: {
+      embedUrl: 'https://www.youtube-nocookie.com/embed/Q2Fk8eVHc3o?rel=0&modestbranding=1',
+      watchUrl: 'https://www.youtube.com/watch?v=Q2Fk8eVHc3o',
+    },
     cover: media.betweenLandAndOcean.cover,
     gallery: media.betweenLandAndOcean.gallery,
     ratio: 'wide',
@@ -105,11 +113,11 @@ export const works: Work[] = [
   },
 
   {
-    slug: 'poeme',
+    slug: 'my-lover',
     medium: 'film',
     year: '2025',
     order: 3,
-    title: { fr: 'Poème', en: 'Poème' },
+    title: { fr: 'My Lover', en: 'My Lover' },
     category: { fr: 'Court-métrage', en: 'Short film' },
     role: { fr: 'Réalisation, Image & Montage', en: 'Director, Cinematography & Editor' },
     location: { fr: 'Bénin', en: 'Benin' },
@@ -137,14 +145,13 @@ export const works: Work[] = [
       { label: { fr: 'Lumière', en: 'Lighting' }, value: 'Khaled Mamah, Alexandre Gandaho' },
       { label: { fr: 'Production', en: 'Production' }, value: 'Kerawa Studio' },
     ],
-    videoUrl: '',
-    cover: media.poeme.cover,
-    gallery: media.poeme.gallery,
-    ratio: 'wide',
-    note: {
-      fr: 'Titre définitif à confirmer avec le réalisateur.',
-      en: 'Final title to be confirmed with the director.',
+    video: {
+      embedUrl: 'https://www.youtube-nocookie.com/embed/videoseries?list=UUkVyzPXnIM5o-TC_xzjHzvA&rel=0',
+      watchUrl: 'https://www.youtube.com/channel/UCkVyzPXnIM5o-TC_xzjHzvA',
     },
+    cover: media.myLover.cover,
+    gallery: media.myLover.gallery,
+    ratio: 'wide',
   },
 
   {
@@ -252,4 +259,3 @@ export const nextWork = (current: Work) => {
 
 export const pathFor = (w: Work) =>
   w.medium === 'film' ? `/films/${w.slug}` : `/photographie/${w.slug}`
-

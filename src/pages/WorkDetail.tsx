@@ -45,16 +45,29 @@ export default function WorkDetail() {
         <img src={work.cover} alt={t(work.title)} />
       </figure>
 
+      {work.video && (
+        <section className="detail__film" aria-label={t(d.work.watch)}>
+          <div className="detail__film-frame" data-reveal>
+            <iframe
+              src={work.video.embedUrl}
+              title={`${t(work.title)} — ${t(d.work.watch)}`}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+          <a className="link-underline detail__film-link" href={work.video.watchUrl} target="_blank" rel="noreferrer">
+            {t(d.work.watch)} sur YouTube ↗
+          </a>
+        </section>
+      )}
+
       <section className="detail__statement">
         <p className="eyebrow">{t(d.work.statement)}</p>
         <div>
           <blockquote>{t(work.statement)}</blockquote>
           {work.body.map((p, i) => <p key={i}>{t(p)}</p>)}
-          {work.videoUrl && (
-            <a className="btn" href={work.videoUrl} target="_blank" rel="noreferrer">
-              {t(d.work.watch)} ↗
-            </a>
-          )}
         </div>
       </section>
 
@@ -95,4 +108,3 @@ export default function WorkDetail() {
     </main>
   )
 }
-

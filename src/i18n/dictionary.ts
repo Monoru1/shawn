@@ -14,8 +14,8 @@ export const dictionary = {
   preview: {
     label: { fr: 'Aperçu', en: 'Preview' },
     text: {
-      fr: 'Maquette de présentation — visuels temporaires, textes et crédits réels.',
-      en: 'Presentation mock-up — temporary visuals, real texts and credits.',
+      fr: 'Maquette de présentation — photographies et films de Shawn, textes et crédits réels.',
+      en: 'Presentation mock-up — Shawn’s photography and films, with real texts and credits.',
     },
   },
 
@@ -124,4 +124,3 @@ export const dictionary = {
 export const CONTACT_EMAIL = 'studio@shawnhounkpatin.com'
 export const INSTAGRAM_PERSONAL = 'https://www.instagram.com/shawnpicture__/'
 export const INSTAGRAM_STUDIO = 'https://www.instagram.com/kerawa.space/'
-
