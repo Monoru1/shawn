@@ -32,10 +32,16 @@ const film = {
   coast: 'https://www.ndf.int/media/cache/results-report-2024-cover-14-1-900x600%2Cq%3D85.jpg',
 } as const
 
-export const HERO_VIDEO = ''
+export const HERO_VIDEO = '/media/hero.webm'
+
+/** Fallback pour les Safari qui ne lisent pas VP9. Laisser '' si non généré. */
+export const HERO_VIDEO_FALLBACK = '/media/hero.mp4'
+
+/** Poster extrait de la boucle : aucun saut visuel au démarrage. */
+export const HERO_POSTER = '/media/hero-poster.jpg'
 
 export const media = {
-  heroPoster: journal.lead,
+  heroPoster: HERO_POSTER,
   portrait: journal.portrait,
   kerawaCover: film.wacaCover,
 

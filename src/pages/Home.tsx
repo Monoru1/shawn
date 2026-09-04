@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
 import { useReveal } from '../hooks/useReveal'
-import { media, HERO_VIDEO } from '../data/media'
+import { media, HERO_VIDEO, HERO_VIDEO_FALLBACK } from '../data/media'
 import { films, photos, pathFor } from '../data/works'
 import WorkIndex from '../components/WorkIndex'
 import Seo from '../components/Seo'
@@ -50,7 +50,6 @@ export default function Home() {
           />
           {reelOk && (
             <video
-              src={HERO_VIDEO}
               poster={media.heroPoster}
               autoPlay
               muted
@@ -64,7 +63,12 @@ export default function Home() {
                 opacity: reelReady ? 1 : 0,
                 transition: 'opacity 1.2s var(--ease)',
               }}
-            />
+            >
+              <source src={HERO_VIDEO} type="video/webm" />
+              {HERO_VIDEO_FALLBACK && (
+                <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
+              )}
+            </video>
           )}
           <div className="hero__veil" />
           <div className="grain" aria-hidden="true" />
@@ -151,4 +155,3 @@ export default function Home() {
     </main>
   )
 }
-
