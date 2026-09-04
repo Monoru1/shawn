@@ -4,6 +4,7 @@ import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
 import { useReveal } from '../hooks/useReveal'
 import { findWork, nextWork, pathFor } from '../data/works'
+import VideoPlayer from '../components/VideoPlayer'
 import Seo from '../components/Seo'
 
 export default function WorkDetail() {
@@ -41,26 +42,30 @@ export default function WorkDetail() {
         </dl>
       </header>
 
-      <figure className="detail__hero" data-reveal>
-        <img src={work.cover} alt={t(work.title)} />
-      </figure>
-
-      {work.video && (
+      {/* Quand un film existe, il ouvre la fiche : c'est lui l'œuvre,
+          pas une image fixe. Sinon on garde le visuel de couverture. */}
+      {work.video ? (
         <section className="detail__film" aria-label={t(d.work.watch)}>
-          <div className="detail__film-frame" data-reveal>
-            <iframe
-              src={work.video.embedUrl}
+          <div data-reveal>
+            <VideoPlayer
+              embedUrl={work.video.embedUrl}
+              poster={work.cover}
               title={`${t(work.title)} — ${t(d.work.watch)}`}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+              playLabel={t(d.work.watch)}
+              meta={`${t(work.category)} · ${work.year}`}
             />
           </div>
-          <a className="link-underline detail__film-link" href={work.video.watchUrl} target="_blank" rel="noreferrer">
-            {t(d.work.watch)} sur YouTube ↗
-          </a>
+          <div className="player__strip">
+            <span>{t(work.role)}</span>
+            <a href={work.video.watchUrl} target="_blank" rel="noreferrer">
+              YouTube ↗
+            </a>
+          </div>
         </section>
+      ) : (
+        <figure className="detail__hero" data-reveal>
+          <img src={work.cover} alt={t(work.title)} />
+        </figure>
       )}
 
       <section className="detail__statement">
@@ -108,3 +113,4 @@ export default function WorkDetail() {
     </main>
   )
 }
+

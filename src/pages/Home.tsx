@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
@@ -13,6 +13,21 @@ export default function Home() {
   const { t, lang } = useI18n()
   useReveal(root, [lang])
 
+  // La boucle du hero ne se charge que si l'utilisateur n'a pas demandé
+  // à réduire les animations. Sinon on reste sur le poster : plus rapide,
+  // et conforme aux préférences système.
+  const [reelOk, setReelOk] = useState(false)
+  const [reelReady, setReelReady] = useState(false)
+
+  useEffect(() => {
+    if (!HERO_VIDEO) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReelOk(!mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+
   const featuredFilm = films[0]
   const featuredPhoto = photos[0]
 
@@ -25,10 +40,31 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero__media">
-          {HERO_VIDEO ? (
-            <video src={HERO_VIDEO} poster={media.heroPoster} autoPlay muted loop playsInline />
-          ) : (
-            <img src={media.heroPoster} alt="" />
+          <img
+            src={media.heroPoster}
+            alt=""
+            style={{
+              opacity: reelReady ? 0 : 1,
+              transition: 'opacity 1.2s var(--ease)',
+            }}
+          />
+          {reelOk && (
+            <video
+              src={HERO_VIDEO}
+              poster={media.heroPoster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onCanPlay={() => setReelReady(true)}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: reelReady ? 1 : 0,
+                transition: 'opacity 1.2s var(--ease)',
+              }}
+            />
           )}
           <div className="hero__veil" />
           <div className="grain" aria-hidden="true" />

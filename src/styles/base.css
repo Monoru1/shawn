@@ -1,18 +1,30 @@
 :root {
-  --ink: #0d0d0c;
-  --ink-soft: #1a1a18;
-  --paper: #f2efe6;
-  --paper-dim: #ded9cd;
-  --sea: #3f6259;
-  --sea-light: #7fa197;
-  --sand: #b9a184;
+  /* — matière — */
+  --ink: #0c0b0a;
+  --ink-soft: #171613;
+  --ink-lift: #201e1a;
+  --paper: #ece7dc;
+  --paper-dim: #cfc9bb;
+
+  /* — accent unique, décliné — */
+  --sea: #35544c;
+  --sea-light: #9db8ad;
+  --sand: #b5ae9b;
 
   --fg: var(--paper);
   --bg: var(--ink);
-  --line: rgba(242, 239, 230, 0.16);
+  --line: rgba(236, 231, 220, 0.14);
+  --line-strong: rgba(236, 231, 220, 0.3);
 
+  /* — voix typographiques — */
   --display: 'Fraunces', Georgia, serif;
   --ui: 'Archivo', system-ui, -apple-system, sans-serif;
+  --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* — échelle fluide — */
+  --t-meta: 11px;
+  --t-body: clamp(15px, 0.35vw + 14px, 17px);
+  --t-lead: clamp(19px, 1.1vw + 15px, 26px);
 
   --pad: clamp(1rem, 4vw, 4.5rem);
   --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
@@ -27,11 +39,12 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--ui);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: var(--t-body);
+  line-height: 1.6;
   overflow-x: hidden;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -50,17 +63,17 @@ p { margin: 0 0 1.1em; }
 /* — primitives — */
 
 .eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: var(--t-meta);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.55;
   margin: 0 0 1rem;
 }
 
 .link-underline {
   position: relative;
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .link-underline::after {
@@ -79,18 +92,17 @@ p { margin: 0 0 1.1em; }
   border: 1px solid currentColor;
   padding: 0.85rem 1.6rem;
   font-size: 12px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: background 0.35s var(--ease), color 0.35s var(--ease);
 }
-.btn:hover { background: currentColor; }
-.btn:hover { color: var(--bg); }
+.btn:hover { background: currentColor; color: var(--bg); }
 .btn--lg { padding: 1.3rem 3rem; font-size: 14px; }
 
 .tag {
   display: inline-block;
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 0.32rem 0.7rem;
   border: 1px solid var(--line);
@@ -114,7 +126,7 @@ p { margin: 0 0 1.1em; }
 .grain {
   position: absolute;
   inset: -50%;
-  opacity: 0.13;
+  opacity: 0.11;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
   animation: grain 0.5s steps(3) infinite;

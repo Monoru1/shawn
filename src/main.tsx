@@ -5,6 +5,7 @@ import { I18nProvider } from './i18n/I18nContext'
 import App from './App'
 import './styles/base.css'
 import './styles/app.css'
+import './styles/refine.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

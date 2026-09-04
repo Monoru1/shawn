@@ -1,0 +1,179 @@
+/* =========================================================
+   COUCHE DE FINITION — chargée après app.css
+   1. Voix mono pour toutes les métadonnées
+   2. Lecteur vidéo
+   ========================================================= */
+
+/* ---------- 1. MÉTADONNÉES EN MONO ---------- */
+
+.eyebrow,
+.tag,
+.spec dt,
+.detail__facts dt,
+.detail__partners li,
+.index__year,
+.index__medium,
+.index__cat,
+.index__loc,
+.index__row--head,
+.index__filters button,
+.card__meta span,
+.card__cue,
+.door__num,
+.hero__role,
+.hero__foot,
+.footer__base,
+.footer__social,
+.kerawa__num,
+.kerawa__works-list span,
+.kerawa__partners li,
+.preview-banner,
+.lang-switch,
+.header__mark span,
+.header__nav,
+.mobile-nav small {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* le mono est plus large : on resserre le tracking hérité */
+.eyebrow { letter-spacing: 0.12em; }
+.hero__role { letter-spacing: 0.18em; }
+.index__row--head,
+.index__medium,
+.card__cue,
+.kerawa__num { letter-spacing: 0.13em; }
+.header__nav { letter-spacing: 0.09em; font-size: 11px; }
+.footer__base,
+.hero__foot { letter-spacing: 0.09em; }
+.tag { letter-spacing: 0.11em; }
+
+/* les valeurs restent en UI : seules les étiquettes sont "technique" */
+.spec dd,
+.detail__facts dd { font-family: var(--ui); }
+
+/* légère respiration éditoriale sur les blocs de texte long */
+.detail__statement p,
+.about__copy > p:not(.about__lead),
+.pair__meta p { line-height: 1.7; }
+
+
+/* ---------- 2. LECTEUR VIDÉO ---------- */
+
+.player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--line);
+}
+
+.player__frame,
+.player__native {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* — façade (avant le clic) — */
+.player__facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.player__poster {
+  position: absolute;
+  inset: 0;
+  filter: saturate(0.6) contrast(1.06) brightness(0.82);
+  transition: filter 0.7s var(--ease), transform 1.4s var(--ease);
+}
+.player__facade:hover .player__poster {
+  filter: saturate(0.85) contrast(1.02) brightness(0.92);
+  transform: scale(1.02);
+}
+
+.player__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 11, 10, 0.15) 0%,
+    rgba(12, 11, 10, 0.05) 45%,
+    rgba(12, 11, 10, 0.6) 100%
+  );
+}
+
+.player__cue {
+  position: absolute;
+  left: clamp(1rem, 3vw, 2.4rem);
+  bottom: clamp(1rem, 3vw, 2.2rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--paper);
+}
+
+.player__disc {
+  width: clamp(46px, 5vw, 64px);
+  height: clamp(46px, 5vw, 64px);
+  flex: none;
+  border: 1px solid var(--paper);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.player__disc svg { width: 30%; height: 30%; fill: currentColor; }
+.player__facade:hover .player__disc {
+  background: var(--paper);
+  color: var(--ink);
+  transform: scale(1.06);
+}
+
+.player__label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  text-align: left;
+}
+.player__label b { display: block; font-weight: 400; }
+.player__label span { display: block; opacity: 0.6; }
+
+/* — barre technique sous le lecteur — */
+.player__strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.player__strip a { transition: opacity 0.3s; }
+.player__strip a:hover { opacity: 1; }
+
+@media (max-width: 560px) {
+  .player__label span { display: none; }
+}
+
+
+.detail__film { padding: 0 var(--pad); }
+.detail__film .player__strip { margin-top: 0.9rem; }
