@@ -46,7 +46,7 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
         if (event.key === 'End') { event.preventDefault(); onChange(photos.length - 1) }
       }}>
       <div className="lightbox-top">
-        <span className="micro">Shawn N. Hounkpatin <span className="lightbox-disclaimer">/ {t(e.previewShort)}</span></span>
+        <span className="micro">Shawn N. Hounkpatin </span>
         <button type="button" className="lightbox-close" onClick={onClose} autoFocus>{t(e.close)} <span aria-hidden="true">×</span></button>
       </div>
       <div className="lightbox-stage"
@@ -63,7 +63,7 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
         <button type="button" className="lightbox-arrow" aria-label={t(e.next)} onClick={() => step(1)} disabled={photos.length < 2}>→</button>
       </div>
       <div className="lightbox-bottom">
-        <div aria-live="polite" aria-atomic="true"><span className="micro">{String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span><p>{t(photo.title)}</p></div>
+        <div aria-live="polite" aria-atomic="true"><span className="micro">{String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span><div className="lightbox-caption"><p>{t(photo.title)}</p><span>{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><small>{t(photo.context)}</small></div></div>
         <span className="micro lightbox-help">{t(e.keyboard)}</span>
       </div>
     </dialog>, document.body,

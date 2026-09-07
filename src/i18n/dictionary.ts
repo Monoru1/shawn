@@ -121,6 +121,6 @@ export const dictionary = {
   },
 } as const
 
-export const CONTACT_EMAIL = 'shawn@example.com'
+export const CONTACT_EMAIL = 'shawn@kerawastudio.com'
 export const INSTAGRAM_PERSONAL = 'https://www.instagram.com/shawnpicture__/'
 export const INSTAGRAM_STUDIO = 'https://www.instagram.com/kerawa.space/'

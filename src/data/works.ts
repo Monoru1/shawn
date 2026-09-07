@@ -39,7 +39,7 @@ export const works: Work[] = [
     title: { fr: 'Between Land and Ocean', en: 'Between Land and Ocean' },
     category: { fr: 'Documentaire narratif', en: 'Narrative documentary' },
     role: { fr: 'Réalisation & Image', en: 'Director & DOP' },
-    location: { fr: 'Gbècon & Avloh, Bénin', en: 'Gbècon & Avloh, Benin' },
+    location: { fr: 'Gbècon, Bénin', en: 'Gbècon, Benin' },
     statement: {
       fr: "Trouver la façon la plus honnête de raconter Gbècon, un village profondément touché par l'érosion côtière.",
       en: 'Finding the most honest way to tell the story of Gbècon, a village deeply affected by coastal erosion.',
@@ -70,7 +70,7 @@ export const works: Work[] = [
       watchUrl: 'https://www.youtube.com/watch?v=Q2Fk8eVHc3o',
     },
     cover: media.betweenLandAndOcean.cover,
-    gallery: media.betweenLandAndOcean.gallery,
+    gallery: [],
     ratio: 'wide',
   },
 
@@ -146,11 +146,11 @@ export const works: Work[] = [
       { label: { fr: 'Production', en: 'Production' }, value: 'Kerawa Studio' },
     ],
     video: {
-      embedUrl: 'https://www.youtube-nocookie.com/embed/videoseries?list=UUkVyzPXnIM5o-TC_xzjHzvA&rel=0',
-      watchUrl: 'https://www.youtube.com/channel/UCkVyzPXnIM5o-TC_xzjHzvA',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/e5d2Bag4pCI?rel=0',
+      watchUrl: 'https://www.youtube.com/watch?v=e5d2Bag4pCI',
     },
-    cover: media.myLover.cover,
-    gallery: media.myLover.gallery,
+    cover: 'https://i.ytimg.com/vi/e5d2Bag4pCI/hqdefault.jpg',
+    gallery: [],
     ratio: 'wide',
   },
 
