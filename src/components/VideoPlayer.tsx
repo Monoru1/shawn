@@ -90,7 +90,6 @@ export default function VideoPlayer({
       )}
 
       {active && fileSrc && (
-        // eslint-disable-next-line jsx-a11y/media-has-caption
         <video
           className="player__native"
           src={fileSrc}

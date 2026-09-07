@@ -1,156 +1,69 @@
-import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
-import { dictionary as d } from '../i18n/dictionary'
-import { useReveal } from '../hooks/useReveal'
-import { media, HERO_VIDEO, HERO_VIDEO_FALLBACK } from '../data/media'
-import { films, photos, pathFor } from '../data/works'
-import WorkIndex from '../components/WorkIndex'
+import { editorial as e } from '../i18n/editorial'
+import { photographs } from '../data/photography'
+import PhotoImage from '../components/PhotoImage'
 import Seo from '../components/Seo'
 
 export default function Home() {
-  const root = useRef<HTMLElement>(null)
-  const { t, lang } = useI18n()
-  useReveal(root, [lang])
-
-  // La boucle du hero ne se charge que si l'utilisateur n'a pas demandé
-  // à réduire les animations. Sinon on reste sur le poster : plus rapide,
-  // et conforme aux préférences système.
-  const [reelOk, setReelOk] = useState(false)
-  const [reelReady, setReelReady] = useState(false)
-
-  useEffect(() => {
-    if (!HERO_VIDEO) return
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const sync = () => setReelOk(!mq.matches)
-    sync()
-    mq.addEventListener('change', sync)
-    return () => mq.removeEventListener('change', sync)
-  }, [])
-
-  const featuredFilm = films[0]
-  const featuredPhoto = photos[0]
-
+  const { t } = useI18n()
   return (
-    <main ref={root}>
-      <Seo
-        title={lang === 'fr' ? 'Photographe & Cinéaste' : 'Photographer & Filmmaker'}
-        description={t(d.about.bio1)}
-      />
-
-      <section className="hero">
-        <div className="hero__media">
-          <img
-            src={media.heroPoster}
-            alt=""
-            style={{
-              opacity: reelReady ? 0 : 1,
-              transition: 'opacity 1.2s var(--ease)',
-            }}
-          />
-          {reelOk && (
-            <video
-              poster={media.heroPoster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              onCanPlay={() => setReelReady(true)}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                opacity: reelReady ? 1 : 0,
-                transition: 'opacity 1.2s var(--ease)',
-              }}
-            >
-              <source src={HERO_VIDEO} type="video/webm" />
-              {HERO_VIDEO_FALLBACK && (
-                <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
-              )}
-            </video>
-          )}
-          <div className="hero__veil" />
-          <div className="grain" aria-hidden="true" />
-        </div>
-
-        <div className="hero__content">
-          <p className="hero__role">{t(d.hero.role)}</p>
-          <h1 className="hero__name">
-            <span>Shawn N.</span>
-            <span>Hounkpatin</span>
-          </h1>
-          <p className="hero__line">{t(d.hero.line)}</p>
-        </div>
-
-        <div className="hero__doors">
-          <Link to="/films" className="door">
-            <span className="door__num">01</span>
-            <span className="door__label">{t(d.hero.enterFilm)}</span>
-            <span className="door__arrow" aria-hidden="true">→</span>
-          </Link>
-          <Link to="/photographie" className="door">
-            <span className="door__num">02</span>
-            <span className="door__label">{t(d.hero.enterPhoto)}</span>
-            <span className="door__arrow" aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <div className="hero__foot">
-          <span>{t(d.hero.base)}</span>
-          <span>{t(d.hero.scroll)} ↓</span>
-        </div>
-      </section>
-
-      <WorkIndex />
-
-      <section className="pair">
-        {[featuredFilm, featuredPhoto].map(w => (
-          <article key={w.slug} className={`pair__item pair__item--${w.ratio}`}>
-            <Link to={pathFor(w)} className="pair__media" data-reveal>
-              <img src={w.cover} alt={t(w.title)} loading="lazy" />
-            </Link>
-            <div className="pair__meta">
-              <span className={`tag tag--${w.medium}`}>{t(d.medium[w.medium])}</span>
-              <h3>{t(w.title)}</h3>
-              <p>{t(w.statement)}</p>
-              <Link to={pathFor(w)} className="link-underline">
-                {t(w.medium === 'film' ? d.work.backFilms : d.work.backPhoto).replace('← ', '')} ↗
-              </Link>
+    <main id="main-content" className="editorial-home">
+      <Seo title={t(e.role).replace('\n', ' ')} description={t(e.bio)} />
+      <section className="cover" aria-labelledby="shawn-name">
+        <div className="cover-kicker micro"><span>{t(e.location)}</span><span>{t(e.previewShort)} / 2026</span></div>
+        <h1 id="shawn-name" className="cover-name" aria-label="Shawn N. Hounkpatin">SHAWN<span aria-hidden="true">.</span></h1>
+        <div className="cover-byline"><span>N. Hounkpatin</span><span className="micro">{t(e.photography)} & {t(e.cinema)}</span></div>
+        <div className="cover-composition">
+          <div className="cover-intro">
+            <h2>{t(e.role)}</h2>
+            <p>{t(e.introduction)}</p>
+            <div className="cover-links">
+              <Link to="/photographie"><span>{t(e.photography)}</span><span aria-hidden="true">↗</span></Link>
+              <Link to="/films"><span>{t(e.cinema)}</span><span aria-hidden="true">↗</span></Link>
             </div>
-          </article>
-        ))}
-      </section>
-
-      <section className="about" id="profil">
-        <p className="eyebrow">{t(d.about.eyebrow)}</p>
-        <div className="about__grid">
-          <figure className="about__portrait" data-reveal>
-            <img src={media.portrait} alt="Shawn N. Hounkpatin" loading="lazy" />
+            <span className="micro cover-scroll">↓ &nbsp; {t(e.scroll)}</span>
+          </div>
+          <figure className="cover-portrait">
+            <PhotoImage photo={photographs[0]} eager sizes="(max-width: 700px) 65vw, 42vw" />
+            <figcaption className="micro"><span>01 / {t(e.photography)}</span><span>{t(e.previewShort)}</span></figcaption>
           </figure>
-          <div className="about__copy">
-            <p className="about__lead">{t(d.about.bio1)}</p>
-            <p>{t(d.about.bio2)}</p>
-            <dl className="spec">
-              <div><dt>{t(d.about.basedLabel)}</dt><dd>{t(d.hero.base)}</dd></div>
-              <div><dt>{t(d.about.fieldsLabel)}</dt><dd>{t(d.about.fieldsValue)}</dd></div>
-              <div><dt>{t(d.about.studioLabel)}</dt><dd>Kerawa Studio</dd></div>
-              <div><dt>{t(d.about.availabilityLabel)}</dt><dd>{t(d.about.availabilityValue)}</dd></div>
-            </dl>
+          <div className="cover-aside">
+            <span className="cover-ampersand" aria-hidden="true">&</span>
+            <Link to="/films" className="cover-film" aria-label={t(e.openCinema)}>
+              <PhotoImage photo={photographs[4]} eager sizes="(max-width: 700px) 35vw, 25vw" />
+              <span className="micro"><span>02 / {t(e.cinema)}</span><span aria-hidden="true">↗</span></span>
+            </Link>
+            <p>{t(e.filmCaption)}</p>
           </div>
         </div>
+        <p className="cover-note micro">{t(e.preview)}</p>
       </section>
 
-      <section className="kerawa-teaser">
-        <div className="kerawa-teaser__media" data-reveal>
-          <img src={media.kerawaCover} alt="" loading="lazy" />
+      <section className="practice" aria-labelledby="practice-heading">
+        <div className="section-label micro"><span>01 — {t(e.practice)}</span><span>Shawn N. Hounkpatin</span></div>
+        <h2 id="practice-heading" className="editorial-heading">{t(e.practiceTitle)}</h2>
+        <div className="practice-pair">
+          <article className="practice-universe">
+            <Link to="/photographie" className="universe-image" aria-label={t(e.openPhoto)}><PhotoImage photo={photographs[3]} /><span className="image-corner" aria-hidden="true">↗</span></Link>
+            <div className="universe-caption"><span className="micro">I / {t(e.previewShort)}</span><h3><Link to="/photographie">{t(e.photography)} <span aria-hidden="true">↗</span></Link></h3><p>{t(e.photoDescription)}</p></div>
+          </article>
+          <article className="practice-universe practice-universe--film">
+            <Link to="/films" className="universe-image universe-image--landscape" aria-label={t(e.openCinema)}><PhotoImage photo={photographs[4]} /><span className="image-corner" aria-hidden="true">↗</span></Link>
+            <div className="universe-caption"><span className="micro">II / {t(e.previewShort)}</span><h3><Link to="/films">{t(e.cinema)} <span aria-hidden="true">↗</span></Link></h3><p>{t(e.filmDescription)}</p></div>
+          </article>
         </div>
-        <div className="kerawa-teaser__copy">
-          <p className="eyebrow">{t(d.kerawa.eyebrow)}</p>
-          <h2>Kerawa<br />Studio</h2>
-          <p className="kerawa-teaser__line">{t(d.kerawa.tagline)}</p>
-          <Link to="/kerawa" className="btn">{t(d.nav.kerawa)} →</Link>
-        </div>
+      </section>
+
+      <section className="artist" aria-labelledby="artist-heading">
+        <div className="section-label micro"><span>02 — {t(e.profile)}</span><span>{t(e.location)}</span></div>
+        <div className="artist-layout"><h2 id="artist-heading">{t(e.profileTitle)}</h2><div><p>{t(e.bio)}</p><p>{t(e.bioSecond)}</p><a className="text-link" href="#contact">{t(e.contact)} <span aria-hidden="true">↗</span></a></div></div>
+      </section>
+
+      <section className="studio-intro" aria-labelledby="studio-heading">
+        <div className="section-label micro"><span>03 — Kerawa Studio</span><span>{t(e.studioLabel)}</span></div>
+        <div className="studio-layout"><h2 id="studio-heading">{t(e.studioTitle)}</h2><div><p>{t(e.studioText)}</p><Link to="/kerawa" className="text-link">{t(e.studioLink)} <span aria-hidden="true">↗</span></Link></div></div>
+        <Link to="/kerawa" className="studio-wordmark" aria-label={t(e.studioLink)}>kerawa<span aria-hidden="true">↗</span></Link>
       </section>
     </main>
   )

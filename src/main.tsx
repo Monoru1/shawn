@@ -6,6 +6,7 @@ import App from './App'
 import './styles/base.css'
 import './styles/app.css'
 import './styles/refine.css'
+import './styles/editorial.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
