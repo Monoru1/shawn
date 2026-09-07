@@ -47,7 +47,7 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
       }}>
       <div className="lightbox-top">
         <span className="micro">Shawn N. Hounkpatin </span>
-        <button type="button" className="lightbox-close" onClick={onClose} autoFocus>{t(e.close)} <span aria-hidden="true">×</span></button>
+        <button type="button" className="lightbox-close" onClick={onClose}>{t(e.close)} <span aria-hidden="true">×</span></button>
       </div>
       <div className="lightbox-stage"
         onTouchStart={event => { if (event.touches.length === 1) touch.current = { x: event.touches[0].clientX, y: event.touches[0].clientY } }}
