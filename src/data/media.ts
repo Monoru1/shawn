@@ -1,83 +1,103 @@
-/**
- * SOURCE UNIQUE DE TOUS LES VISUELS DU SITE.
- *
- * Les photographies ci-dessous sont des œuvres de Shawn publiées dans son
- * portrait 54Journal. Les images du documentaire viennent de la page officielle
- * du Nordic Development Fund. Dès réception des masters, il suffira de remplacer
- * ces URL par des chemins `/media/...` sans toucher aux composants.
- */
+import type { Localized } from './works'
 
-const journal = {
-  lead: 'https://cdn.sanity.io/images/x3v7xpoi/production/827ef8d4e84987a1430b0e4b787210cfb4b3c046-1352x560.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&h=1200&q=92&w=2900',
-  portrait: 'https://cdn.sanity.io/images/x3v7xpoi/production/2d912043f91a68f12a4c7ea03c663eea6f9e5b1d-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image02: 'https://cdn.sanity.io/images/x3v7xpoi/production/2b1558f12b7fb1963872183012d7a297e00e4789-810x540.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1800',
-  image03: 'https://cdn.sanity.io/images/x3v7xpoi/production/b3baf4d524b6ee1113aeb9d8ecbed03d085a3322-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image04: 'https://cdn.sanity.io/images/x3v7xpoi/production/9d86ea08684a7ed2606ed8ff8e38e9eb1a25fae9-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image05: 'https://cdn.sanity.io/images/x3v7xpoi/production/03ae997b06c2c5257a542a4d8435fc9789fe1879-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image06: 'https://cdn.sanity.io/images/x3v7xpoi/production/2b694171a086d7974228218b94397c9f87dda138-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image07: 'https://cdn.sanity.io/images/x3v7xpoi/production/67017b606c7decc7a05ad6f5917747e20c658e38-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image08: 'https://cdn.sanity.io/images/x3v7xpoi/production/c5f70516da3f4ff26286f536459acd63e77fb827-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image09: 'https://cdn.sanity.io/images/x3v7xpoi/production/8354c6dcd883ccea293e994d840f997da792ca6e-810x540.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1800',
-  image10: 'https://cdn.sanity.io/images/x3v7xpoi/production/3b91ffe0e207311ed612faffa2ca09120adcab5f-810x540.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1800',
-  image11: 'https://cdn.sanity.io/images/x3v7xpoi/production/c0225417b3643f0eb95ca0797d99de0ed18ccc50-810x540.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1800',
-  image12: 'https://cdn.sanity.io/images/x3v7xpoi/production/2d9f00774c0008802f10f55273fde571b7f455d3-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image13: 'https://cdn.sanity.io/images/x3v7xpoi/production/3bc66c72577bb3a588a13eb3365ad76c5e2486a8-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-  image14: 'https://cdn.sanity.io/images/x3v7xpoi/production/49fc0dcfaadbbb639a96dafee73479a11cfb3c38-540x810.jpg?auto=format&crop=focalpoint&fit=crop&fm=webp&q=90&w=1200',
-} as const
+export type ArtworkAsset = {
+  src: string
+  srcSet?: string
+  width: number
+  height: number
+  alt: Localized
+}
 
-const film = {
-  betweenPoster: 'https://i.ytimg.com/vi/Q2Fk8eVHc3o/maxresdefault.jpg',
-  wacaCover: 'https://www.ndf.int/media/cache/waca-thumbnail-1920x9999%2Cq%3D85.jpg',
-  avloh: 'https://www.ndf.int/media/cache/results-report-2024-cover-9-900x600%2Cq%3D85.jpg',
-  coast: 'https://www.ndf.int/media/cache/results-report-2024-cover-14-1-900x600%2Cq%3D85.jpg',
-} as const
+const asset = (
+  src: string,
+  width: number,
+  height: number,
+  alt: Localized,
+  srcSet?: string,
+): ArtworkAsset => ({ src, srcSet, width, height, alt })
+
+const betweenAlt = {
+  fr: "Affiche de Between Land and Ocean : une jeune fille de dos face à l'océan.",
+  en: 'Between Land and Ocean poster: a young girl seen from behind, facing the ocean.',
+}
+
+const loverAlt = {
+  fr: 'Affiche de My Lover : une femme tourne le regard vers un homme, dans une lumière sombre.',
+  en: 'My Lover poster: a woman looks toward a man in low, intimate light.',
+}
 
 export const HERO_VIDEO = '/media/hero.webm'
-
-/** Fallback pour les Safari qui ne lisent pas VP9. Laisser '' si non généré. */
 export const HERO_VIDEO_FALLBACK = '/media/hero.mp4'
 
-/** Poster extrait de la boucle : aucun saut visuel au démarrage. */
-export const HERO_POSTER = '/media/hero-poster.jpg'
-
 export const media = {
-  heroPoster: HERO_POSTER,
-  portrait: journal.portrait,
-  kerawaCover: film.wacaCover,
-
+  heroPoster: asset(
+    '/media/hero-poster.jpg',
+    1920,
+    1080,
+    {
+      fr: "Une femme d'un village côtier béninois, image extraite d'un film de Shawn.",
+      en: 'A woman in a Beninese coastal village, a frame from a film by Shawn.',
+    },
+  ),
+  portrait: asset(
+    '/media/profile/shawn-1200.webp',
+    1200,
+    1800,
+    {
+      fr: 'Portrait de Shawn N. Hounkpatin, regard tourné vers la lumière.',
+      en: 'Portrait of Shawn N. Hounkpatin, looking toward the light.',
+    },
+    '/media/profile/shawn-480.webp 480w, /media/profile/shawn-800.webp 800w, /media/profile/shawn-1200.webp 1200w',
+  ),
   betweenLandAndOcean: {
-    cover: film.betweenPoster,
-    gallery: [film.wacaCover, film.avloh, film.coast],
+    cover: asset(
+      '/media/films/between-1280.webp',
+      1280,
+      720,
+      betweenAlt,
+      '/media/films/between-640.webp 640w, /media/films/between-960.webp 960w, /media/films/between-1280.webp 1280w',
+    ),
+    gallery: [] as ArtworkAsset[],
   },
-
   myLover: {
-    cover: journal.image11,
-    gallery: [journal.image12, journal.image13, journal.image14],
+    cover: asset('/media/films/my-lover-480.webp', 480, 360, loverAlt),
+    gallery: [] as ArtworkAsset[],
   },
-
-  lamiCotonou: {
-    cover: journal.image09,
-    gallery: [journal.image10, journal.image02],
-  },
-
   enchantresse: {
-    cover: journal.image03,
-    gallery: [journal.image04, journal.image05, journal.image06, journal.image07],
+    cover: asset(
+      '/media/works/enchantresse-1-800.webp',
+      800,
+      533,
+      {
+        fr: "Une figure drapée se tient sur les rochers face à l'océan, sous un ciel bleu.",
+        en: 'A draped figure stands on rocks facing the ocean under a blue sky.',
+      },
+      '/media/works/enchantresse-1-400.webp 400w, /media/works/enchantresse-1-600.webp 600w, /media/works/enchantresse-1-800.webp 800w',
+    ),
+    gallery: [] as ArtworkAsset[],
   },
-
-  mode: {
-    cover: journal.image08,
-    gallery: [journal.image03, journal.image05, journal.image12, journal.image14],
-  },
-
-  documentaire: {
-    cover: journal.image02,
-    gallery: [journal.image09, journal.image10, journal.image11],
+  portraitOfAGenius: {
+    cover: asset(
+      '/media/works/kidjo-1-800.webp',
+      800,
+      652,
+      {
+        fr: "Femi et Sica Kidjo photographiées dans les rues d'Akpakpa, à Cotonou.",
+        en: 'Femi and Sica Kidjo photographed in the streets of Akpakpa, Cotonou.',
+      },
+      '/media/works/kidjo-1-400.webp 400w, /media/works/kidjo-1-600.webp 600w, /media/works/kidjo-1-800.webp 800w',
+    ),
+    gallery: [
+      asset('/media/works/kidjo-2-800.webp', 800, 640, { fr: 'Portrait de Sica Kidjo à Akpakpa.', en: 'Portrait of Sica Kidjo in Akpakpa.' }, '/media/works/kidjo-2-400.webp 400w, /media/works/kidjo-2-600.webp 600w, /media/works/kidjo-2-800.webp 800w'),
+      asset('/media/works/donli-1-800.webp', 800, 1000, { fr: 'Lady Donli pendant sa résidence musicale à Cotonou.', en: 'Lady Donli during her music residency in Cotonou.' }, '/media/works/donli-1-400.webp 400w, /media/works/donli-1-600.webp 600w, /media/works/donli-1-800.webp 800w'),
+      asset('/media/works/donli-2-800.webp', 800, 640, { fr: 'Lady Donli en chemise rouge rayée, à Cotonou.', en: 'Lady Donli in a red striped shirt, in Cotonou.' }, '/media/works/donli-2-400.webp 400w, /media/works/donli-2-600.webp 600w, /media/works/donli-2-800.webp 800w'),
+    ],
   },
 } as const
 
 export const mediaSources = {
-  photography: 'https://www.54journal.com/stories/shawn-hounkpatin',
+  portrait: 'https://www.54journal.com/stories/shawn-hounkpatin',
+  photography: 'https://bj.linkedin.com/showcase/kerawa-space/',
   betweenLandAndOcean: 'https://www.youtube.com/watch?v=Q2Fk8eVHc3o',
-  ndf: 'https://www.ndf.int/newsroom/protecting-west-african-coastlines-from-the-impacts-of-climate-change.html',
+  myLover: 'https://www.youtube.com/watch?v=e5d2Bag4pCI',
 } as const

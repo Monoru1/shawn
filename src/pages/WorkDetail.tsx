@@ -1,116 +1,59 @@
-import { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import ArtworkImage from '../components/ArtworkImage'
+import Seo from '../components/Seo'
+import VideoPlayer from '../components/VideoPlayer'
+import { findWork, nextWork, pathFor } from '../data/works'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
-import { useReveal } from '../hooks/useReveal'
-import { findWork, nextWork, pathFor } from '../data/works'
-import VideoPlayer from '../components/VideoPlayer'
-import Seo from '../components/Seo'
 
 export default function WorkDetail() {
   const { slug } = useParams()
-  const root = useRef<HTMLElement>(null)
-  const { t, lang } = useI18n()
+  const { t } = useI18n()
   const work = findWork(slug)
-  useReveal(root, [lang, slug])
 
-  if (!work) {
-    return (
-      <main className="empty">
-        <h1>{t(d.work.notFound)}</h1>
-        <Link to="/" className="link-underline">{t(d.notFound.back)}</Link>
-      </main>
-    )
-  }
+  if (!work) return <main id="main-content" className="empty"><h1>{t(d.work.notFound)}</h1><Link to="/">{t(d.notFound.back)}</Link></main>
 
   const next = nextWork(work)
-  const backLabel = t(work.medium === 'film' ? d.work.backFilms : d.work.backPhoto)
   const backPath = work.medium === 'film' ? '/films' : '/photographie'
+  const backLabel = t(work.medium === 'film' ? d.work.backFilms : d.work.backPhoto)
 
-  return (
-    <main ref={root} className={`detail detail--${work.medium}`}>
-      <Seo title={t(work.title)} description={t(work.statement)} />
+  return <main id="main-content" className={`project project--${work.medium}`}>
+    <Seo title={t(work.title)} description={t(work.statement)} />
+    <header className="project__header">
+      <Link to={backPath} className="project__back">{backLabel}</Link>
+      <div className="project__number micro">Shawn N. Hounkpatin / {work.year}</div>
+      <h1>{t(work.title)}</h1>
+      <dl className="project__facts">
+        <div><dt>{t(d.index.colMedium)}</dt><dd>{t(d.medium[work.medium])}</dd></div>
+        <div><dt>{t(d.index.colCategory)}</dt><dd>{t(work.category)}</dd></div>
+        <div><dt>{t(d.index.colLocation)}</dt><dd>{t(work.location)}</dd></div>
+        <div><dt>{t(d.index.colYear)}</dt><dd>{work.year}</dd></div>
+      </dl>
+    </header>
 
-      <header className="detail__head">
-        <Link to={backPath} className="link-underline detail__back">{backLabel}</Link>
-        <h1>{t(work.title)}</h1>
-        <dl className="detail__facts">
-          <div><dt>{t(d.index.colMedium)}</dt><dd>{t(d.medium[work.medium])}</dd></div>
-          <div><dt>{t(d.index.colCategory)}</dt><dd>{t(work.category)}</dd></div>
-          <div><dt>{t(d.index.colYear)}</dt><dd>{work.year}</dd></div>
-          <div><dt>{t(d.index.colLocation)}</dt><dd>{t(work.location)}</dd></div>
-        </dl>
-      </header>
+    {work.video ? <section className="project__screen" aria-label={t(d.work.watch)}>
+      <VideoPlayer embedUrl={work.video.embedUrl} poster={work.cover.src} title={t(work.title)} playLabel={t(d.work.watch)} meta={`${t(work.category)} / ${work.year}`} />
+      <div className="project__screen-credit"><span>{t(work.role)}</span><a href={work.video.watchUrl} target="_blank" rel="noreferrer">YouTube ↗</a></div>
+    </section> : <figure className="project__cover"><ArtworkImage asset={work.cover} eager sizes="100vw" /><figcaption>{t(work.location)} / {work.year}</figcaption></figure>}
 
-      {/* Quand un film existe, il ouvre la fiche : c'est lui l'œuvre,
-          pas une image fixe. Sinon on garde le visuel de couverture. */}
-      {work.video ? (
-        <section className="detail__film" aria-label={t(d.work.watch)}>
-          <div data-reveal>
-            <VideoPlayer
-              embedUrl={work.video.embedUrl}
-              poster={work.cover}
-              title={`${t(work.title)} — ${t(d.work.watch)}`}
-              playLabel={t(d.work.watch)}
-              meta={`${t(work.category)} · ${work.year}`}
-            />
-          </div>
-          <div className="player__strip">
-            <span>{t(work.role)}</span>
-            <a href={work.video.watchUrl} target="_blank" rel="noreferrer">
-              YouTube ↗
-            </a>
-          </div>
-        </section>
-      ) : (
-        <figure className="detail__hero" data-reveal>
-          <img src={work.cover} alt={t(work.title)} />
-        </figure>
-      )}
+    <section className="project__story">
+      <span className="micro">{t(d.work.statement)}</span>
+      <div><blockquote>{t(work.statement)}</blockquote>{work.body.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}</div>
+    </section>
 
-      <section className="detail__statement">
-        <p className="eyebrow">{t(d.work.statement)}</p>
-        <div>
-          <blockquote>{t(work.statement)}</blockquote>
-          {work.body.map((p, i) => <p key={i}>{t(p)}</p>)}
-        </div>
-      </section>
+    {work.gallery.length > 0 && <section className="project__gallery" aria-label={t(work.title)}>
+      {work.gallery.map((image, index) => <figure key={image.src} className={`project__gallery-item project__gallery-item--${index + 1}`}>
+        <ArtworkImage asset={image} sizes="(max-width: 760px) 100vw, 65vw" />
+        <figcaption><span>{String(index + 1).padStart(2, '0')}</span><p>{t(image.alt)}</p></figcaption>
+      </figure>)}
+    </section>}
 
-      <section className="detail__gallery">
-        {work.gallery.map((src, i) => (
-          <figure key={src} className={i % 3 === 1 ? 'is-offset' : ''} data-reveal>
-            <img src={src} alt={`${t(work.title)} — ${i + 1}`} loading="lazy" />
-          </figure>
-        ))}
-      </section>
+    <section className="project__credits">
+      <h2>{t(d.work.credits)}</h2>
+      <dl>{work.credits.map(credit => <div key={`${t(credit.label)}-${credit.value}`}><dt>{t(credit.label)}</dt><dd>{credit.value}</dd></div>)}</dl>
+      {work.partners && <div className="project__partners"><span className="micro">{t(d.work.partners)}</span>{work.partners.map(partner => <p key={partner}>{partner}</p>)}</div>}
+    </section>
 
-      <section className="detail__credits">
-        <h2>{t(d.work.credits)}</h2>
-        <dl className="spec">
-          {work.credits.map(c => (
-            <div key={c.value + t(c.label)}>
-              <dt>{t(c.label)}</dt>
-              <dd>{c.value}</dd>
-            </div>
-          ))}
-        </dl>
-
-        {work.partners && (
-          <div className="detail__partners">
-            <p className="eyebrow">{t(d.work.partners)}</p>
-            <ul>{work.partners.map(p => <li key={p}>{p}</li>)}</ul>
-          </div>
-        )}
-
-        {work.note && <p className="detail__note">{t(work.note)}</p>}
-      </section>
-
-      <Link className="detail__next" to={pathFor(next)}>
-        <span className="eyebrow">{t(d.work.next)}</span>
-        <strong>{t(next.title)}</strong>
-        <span aria-hidden="true">→</span>
-      </Link>
-    </main>
-  )
+    <Link className="project__next" to={pathFor(next)}><span className="micro">{t(d.work.next)}</span><strong>{t(next.title)}</strong><i aria-hidden="true">→</i></Link>
+  </main>
 }
-

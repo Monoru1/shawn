@@ -73,7 +73,7 @@ export default function VideoPlayer({
           onFocus={warm}
           aria-label={`${playLabel} — ${title}`}
         >
-          <img className="player__poster" src={poster} alt="" loading="lazy" />
+          <img className="player__poster" src={poster} alt="" width="1280" height="720" loading="eager" decoding="async" />
           <span className="player__scrim" aria-hidden="true" />
           <span className="player__cue">
             <span className="player__disc" aria-hidden="true">
@@ -113,4 +113,3 @@ export default function VideoPlayer({
     </div>
   )
 }
-

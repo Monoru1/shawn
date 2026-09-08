@@ -54,11 +54,10 @@ export default function WorkIndex() {
             <span className="index__loc">
               {t(w.location)} <i aria-hidden="true">↗</i>
             </span>
-            <img className="index__peek" src={w.cover} alt="" loading="lazy" aria-hidden="true" />
+            <img className="index__peek" src={w.cover.src} alt="" loading="lazy" aria-hidden="true" />
           </Link>
         ))}
       </div>
     </section>
   )
 }
-

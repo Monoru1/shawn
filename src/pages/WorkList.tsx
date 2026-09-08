@@ -1,49 +1,42 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import ArtworkImage from '../components/ArtworkImage'
+import Seo from '../components/Seo'
+import { works, pathFor, type Medium } from '../data/works'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
-import { useReveal } from '../hooks/useReveal'
-import { works, pathFor, type Medium } from '../data/works'
-import Seo from '../components/Seo'
 
 export default function WorkList({ medium }: { medium: Medium }) {
-  const root = useRef<HTMLElement>(null)
-  const { t, lang } = useI18n()
-  useReveal(root, [lang, medium])
-
-  const list = works.filter(w => w.medium === medium)
+  const { t } = useI18n()
+  const list = works.filter(work => work.medium === medium)
   const title = t(medium === 'film' ? d.list.filmsTitle : d.list.photoTitle)
   const intro = t(medium === 'film' ? d.list.filmsIntro : d.list.photoIntro)
 
-  return (
-    <main ref={root} className="worklist">
-      <Seo title={title} description={intro} />
+  return <main id="main-content" className="film-index">
+    <Seo title={title} description={intro} />
+    <header className="film-index__intro">
+      <div className="section-label micro"><span>Shawn N. Hounkpatin</span><span>{String(list.length).padStart(2, '0')} {title}</span></div>
+      <h1>{title}</h1>
+      <p>{intro}</p>
+    </header>
 
-      <header className="worklist__head">
-        <p className="eyebrow">{t(d.index.eyebrow)}</p>
-        <h1>{title}</h1>
-        <p className="worklist__intro">{intro}</p>
-      </header>
-
-      <div className={`worklist__grid worklist__grid--${medium}`}>
-        {list.map((w, i) => (
-          <article key={w.slug} className={`card card--${w.ratio}`} style={{ '--i': i } as React.CSSProperties}>
-            <Link to={pathFor(w)} className="card__media" data-reveal>
-              <img src={w.cover} alt={t(w.title)} loading={i === 0 ? 'eager' : 'lazy'} />
-              <span className="card__cue">
-                {medium === 'film' ? t(d.work.watch) : t(d.medium.photo)} ↗
-              </span>
-            </Link>
-            <div className="card__meta">
-              <h2>{t(w.title)}</h2>
-              <span>{t(w.category)}</span>
-              <span>{t(w.role)}</span>
-              <span>{w.year} — {t(w.location)}</span>
-            </div>
-          </article>
-        ))}
-      </div>
-    </main>
-  )
+    <div className="film-index__list">
+      {list.map((work, index) => <article className="film-row" key={work.slug}>
+        <Link to={pathFor(work)} className="film-row__image">
+          <ArtworkImage asset={work.cover} eager={index === 0} sizes="(max-width: 760px) 100vw, 72vw" />
+          <span>{t(d.work.watch)} <i aria-hidden="true">↗</i></span>
+        </Link>
+        <div className="film-row__meta">
+          <span className="micro">{String(index + 1).padStart(2, '0')}</span>
+          <h2><Link to={pathFor(work)}>{t(work.title)}</Link></h2>
+          <p>{t(work.statement)}</p>
+          <dl>
+            <div><dt>{t(d.index.colCategory)}</dt><dd>{t(work.category)}</dd></div>
+            <div><dt>{t(d.index.colLocation)}</dt><dd>{t(work.location)}</dd></div>
+            <div><dt>{t(d.index.colYear)}</dt><dd>{work.year}</dd></div>
+            <div><dt>{t(d.index.colMedium)}</dt><dd>{t(work.role)}</dd></div>
+          </dl>
+        </div>
+      </article>)}
+    </div>
+  </main>
 }
-

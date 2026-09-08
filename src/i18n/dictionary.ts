@@ -96,8 +96,8 @@ export const dictionary = {
   list: {
     filmsTitle: { fr: 'Films', en: 'Films' },
     filmsIntro: {
-      fr: 'Documentaires, formes courtes et commandes. Réalisation et image.',
-      en: 'Documentaries, short forms and commissions. Directing and cinematography.',
+      fr: 'Deux films, deux échelles : une côte qui disparaît et une intimité qui se cherche. Réalisation, image et montage par Shawn.',
+      en: 'Two films, two scales: a disappearing coastline and an intimacy in search of itself. Directed, shot and edited by Shawn.',
     },
     photoTitle: { fr: 'Photographie', en: 'Photography' },
     photoIntro: {
