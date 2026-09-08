@@ -12,7 +12,8 @@ export default function Header() {
   const links = [
     { to: '/photographie', label: e.photography },
     { to: '/films', label: e.cinema },
-    { to: '/kerawa', label: { fr: 'Kerawa Studio', en: 'Kerawa Studio' } },
+    { to: '/archive', label: { fr: 'Index', en: 'Index' } },
+    { to: '/shawn', label: { fr: 'Shawn', en: 'Shawn' } },
   ]
   return <>
     <a className="skip-link" href="#page-content">{t(e.skip)}</a>

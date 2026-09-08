@@ -33,15 +33,15 @@ export const works: Work[] = [
     title: { fr: 'Between Land and Ocean', en: 'Between Land and Ocean' },
     category: { fr: 'Documentaire narratif', en: 'Narrative documentary' },
     role: { fr: 'Réalisation & image', en: 'Director & cinematography' },
-    location: { fr: 'Gbècon, Bénin', en: 'Gbècon, Benin' },
+    location: { fr: 'Avloh, Bénin', en: 'Avloh, Benin' },
     statement: {
-      fr: "Raconter au plus près Gbècon, un village confronté à l'érosion côtière, à travers les yeux d'une jeune fille.",
-      en: 'Telling the story of Gbecon, a village facing coastal erosion, through the eyes of a young girl.',
+      fr: "Raconter au plus près Avloh, un village confronté aux conséquences du changement climatique sur la côte béninoise.",
+      en: 'Staying close to Avloh, a village facing the effects of climate change on the Beninese coast.',
     },
     body: [
       {
-        fr: "Avec son équipe, Shawn construit le film autour d'une journée ordinaire à Gbècon. Le quotidien devient le point d'entrée vers une réalité climatique qui transforme déjà la côte.",
-        en: 'With his team, Shawn builds the film around an ordinary day in Gbecon. Daily life becomes the entry point to a climate reality already reshaping the coast.',
+        fr: "Produit par Kerawa Studio, le documentaire donne la parole aux habitants d’Avloh et observe les solutions construites avec les communautés et les partenaires du projet WACA.",
+        en: 'Produced by Kerawa Studio, the documentary listens to people in Avloh and observes solutions built with communities and WACA project partners.',
       },
       {
         fr: "Le documentaire choisit l'immersion et le récit humain : faire ressentir avant d'expliquer, puis ouvrir la conversation.",
@@ -71,19 +71,19 @@ export const works: Work[] = [
     title: { fr: 'My Lover', en: 'My Lover' },
     category: { fr: 'Court-metrage experimental', en: 'Experimental short film' },
     role: { fr: 'Réalisation, image & montage', en: 'Director, cinematography & editor' },
-    location: { fr: 'Bénin', en: 'Benin' },
+    location: { fr: 'Lieu non publié', en: 'Location unpublished' },
     statement: {
-      fr: "Un poème de Naëtt Mbaye devient le point de départ d'une recherche intime sur le désir et la présence.",
-      en: 'A poem by Naett Mbaye becomes the starting point for an intimate study of desire and presence.',
+      fr: "Des vers introspectifs de Naëtt Mbaye deviennent le point de départ d’un court métrage expérimental sur l’amour.",
+      en: 'Introspective verses by Naëtt Mbaye become the starting point for an experimental short film about love.',
     },
     body: [
       {
-        fr: "Shawn cherche moins à illustrer les mots qu'à traduire les émotions qu'ils ont réveillées. Le film avance par gestes, regards et fragments.",
-        en: 'Rather than illustrating the words, Shawn translates the emotions they awakened. The film moves through gestures, glances and fragments.',
+        fr: "Shawn cherche à traduire en images les émotions réveillées par le poème. Le film est né d’une alchimie spontanée et d’une envie d’exploration.",
+        en: 'Shawn seeks to translate into images the emotions awakened by the poem. The film grew from a spontaneous chemistry and a desire to explore.',
       },
       {
-        fr: "Cette forme courte prolonge son apprentissage du cinéma et son goût pour les récits sensibles, construits avec peu de moyens mais une intention précise.",
-        en: 'This short form extends his apprenticeship in cinema and his interest in sensitive stories made with limited means and precise intent.',
+        fr: "Pour Shawn, ce film marque un déclencheur dans sa pratique et approfondit son apprentissage du cinéma.",
+        en: 'For Shawn, the film marks a turning point in his practice and deepens his exploration of cinema.',
       },
     ],
     credits: [

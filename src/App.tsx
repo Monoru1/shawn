@@ -10,6 +10,8 @@ import WorkList from './pages/WorkList'
 import WorkDetail from './pages/WorkDetail'
 import Kerawa from './pages/Kerawa'
 import NotFound from './pages/NotFound'
+import Archive from './pages/Archive'
+import Shawn from './pages/Shawn'
 
 export default function App() {
   useSmoothScroll()
@@ -40,6 +42,8 @@ export default function App() {
             <Route path="/photographie" element={<Photography />} />
             <Route path="/photographie/:slug" element={<WorkDetail />} />
             <Route path="/kerawa" element={<Kerawa />} />
+            <Route path="/archive" element={<Archive />} />
+            <Route path="/shawn" element={<Shawn />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
@@ -48,4 +52,3 @@ export default function App() {
     </>
   )
 }
-

@@ -32,8 +32,8 @@ export const photographs: Photograph[] = [
 export const filmPoster: Photograph = {
   id: 'between', title: { fr: 'Between Land and Ocean', en: 'Between Land and Ocean' },
   alt: { fr: 'Affiche du film Between Land and Ocean : une jeune fille de dos face à la mer, et le titre en lettres jaunes.', en: 'Between Land and Ocean film poster: a girl seen from behind facing the sea, with the title in yellow letters.' },
-  category: 'documentary', place: { fr: 'Gbècon · Bénin', en: 'Gbècon · Benin' }, year: '2025',
-  context: { fr: 'À Gbècon, une jeune fille raconte le quotidien d’un village face à l’érosion côtière. Réalisation et image : Shawn N. Hounkpatin. Production : Kerawa Studio.', en: 'In Gbècon, a young girl tells of everyday life in a village facing coastal erosion. Directed and photographed by Shawn N. Hounkpatin. Produced by Kerawa Studio.' },
+  category: 'documentary', place: { fr: 'Avloh · Bénin', en: 'Avloh · Benin' }, year: '2025',
+  context: { fr: 'Un documentaire consacré aux communautés côtières d’Avloh et aux effets du changement climatique. Réalisation : Shawn N. Hounkpatin. Production : Kerawa Studio.', en: 'A documentary about Avloh’s coastal communities and the effects of climate change. Directed by Shawn N. Hounkpatin. Produced by Kerawa Studio.' },
   source, width: 800, height: 1000, layout: 'portrait',
 }
 

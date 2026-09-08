@@ -88,7 +88,7 @@ export const media = {
       '/media/works/kidjo-1-400.webp 400w, /media/works/kidjo-1-600.webp 600w, /media/works/kidjo-1-800.webp 800w',
     ),
     gallery: [
-      asset('/media/works/kidjo-2-800.webp', 800, 640, { fr: 'Portrait de Sica Kidjo à Akpakpa.', en: 'Portrait of Sica Kidjo in Akpakpa.' }, '/media/works/kidjo-2-400.webp 400w, /media/works/kidjo-2-600.webp 600w, /media/works/kidjo-2-800.webp 800w'),
+      asset('/media/works/kidjo-2-800.webp', 800, 640, { fr: 'L’une des sœurs Kidjo dans une rue d’Akpakpa.', en: 'One of the Kidjo sisters in a street in Akpakpa.' }, '/media/works/kidjo-2-400.webp 400w, /media/works/kidjo-2-600.webp 600w, /media/works/kidjo-2-800.webp 800w'),
       asset('/media/works/donli-1-800.webp', 800, 1000, { fr: 'Lady Donli pendant sa résidence musicale à Cotonou.', en: 'Lady Donli during her music residency in Cotonou.' }, '/media/works/donli-1-400.webp 400w, /media/works/donli-1-600.webp 600w, /media/works/donli-1-800.webp 800w'),
       asset('/media/works/donli-2-800.webp', 800, 640, { fr: 'Lady Donli en chemise rouge rayée, à Cotonou.', en: 'Lady Donli in a red striped shirt, in Cotonou.' }, '/media/works/donli-2-400.webp 400w, /media/works/donli-2-600.webp 600w, /media/works/donli-2-800.webp 800w'),
     ],
