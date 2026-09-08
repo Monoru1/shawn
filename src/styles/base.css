@@ -5,8 +5,8 @@
   --muted: #686861;
   --line: #cdcdc5;
   --signal: #d3482f;
-  --display: 'Bodoni Moda', 'Times New Roman', serif;
-  --ui: 'Archivo', Arial, sans-serif;
+  --display: 'Spectral', Georgia, serif;
+  --ui: 'IBM Plex Sans', Arial, sans-serif;
   --mono: 'DM Mono', ui-monospace, monospace;
   --pad: clamp(20px, 3.4vw, 64px);
   --ease: cubic-bezier(.22, .75, .18, 1);
@@ -14,7 +14,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 78px; scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--ui); font-size: 15px; line-height: 1.55; overflow-x: clip; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--ui); font-size: 16px; line-height: 1.55; overflow-x: clip; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { border: 0; border-radius: 0; padding: 0; font: inherit; color: inherit; background: none; cursor: pointer; }
 img, video { display: block; width: 100%; height: 100%; }
