@@ -44,7 +44,7 @@ export default function WorkDetail() {
     {work.gallery.length > 0 && <section className="project__gallery" aria-label={t(work.title)}>
       {work.gallery.map((image, index) => <figure key={image.src} className={`project__gallery-item project__gallery-item--${index + 1}`}>
         <ArtworkImage asset={image} sizes="(max-width: 760px) 100vw, 65vw" />
-        <figcaption><span>{String(index + 1).padStart(2, '0')}</span><p>{t(image.alt)}</p></figcaption>
+        <figcaption><p>{t(image.alt)}</p></figcaption>
       </figure>)}
     </section>}
 

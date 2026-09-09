@@ -14,7 +14,7 @@ export default function WorkList({ medium }: { medium: Medium }) {
   return <main id="main-content" className="film-index">
     <Seo title={title} description={intro} />
     <header className="film-index__intro">
-      <div className="section-label micro"><span>Shawn N. Hounkpatin</span><span>{String(list.length).padStart(2, '0')} {title}</span></div>
+      <div className="section-label micro"><span>Shawn N. Hounkpatin</span><span>{t(medium === 'film' ? { fr: 'Filmographie', en: 'Filmography' } : { fr: 'Œuvres photographiques', en: 'Photographic works' })}</span></div>
       <div className="film-index__title"><h1>{title}</h1><p>{intro}</p></div>
     </header>
 
@@ -25,7 +25,7 @@ export default function WorkList({ medium }: { medium: Medium }) {
           <span>{t(d.work.watch)} <i aria-hidden="true">↗</i></span>
         </Link>
         <div className="film-row__meta">
-          <span className="micro">{String(index + 1).padStart(2, '0')}</span>
+          <span className="micro">{t(work.role)}</span>
           <h2><Link to={pathFor(work)}>{t(work.title)}</Link></h2>
           <p>{t(work.statement)}</p>
           <dl>
