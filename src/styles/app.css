@@ -106,7 +106,7 @@
 }
 .door {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.2rem;
   padding: 1.8rem var(--pad);
@@ -334,7 +334,7 @@ a.index__row:hover .index__peek { opacity: 0.85; transform: translateY(-50%) sca
 
 .detail__next {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 1rem;
   padding: 2rem var(--pad) 5rem;

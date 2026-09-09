@@ -15,7 +15,7 @@ const filters: Filter[] = ['all', 'portrait', 'editorial', 'research', 'document
 export default function Photography() {
   const { t } = useI18n()
   const [filter, setFilter] = useState<Filter>('all')
-  const [layout, setLayout] = useState<'editorial' | 'index'>('editorial')
+  const [layout, setLayout] = useState<'editorial' | 'index'>('index')
   const [params, setParams] = useSearchParams()
   const activeId = params.get('image')
   const isProjectView = filter === 'projects'
