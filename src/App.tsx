@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { useEffect, useRef } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { useSmoothScroll } from './hooks/useSmoothScroll'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -14,27 +12,18 @@ import Archive from './pages/Archive'
 import Shawn from './pages/Shawn'
 
 export default function App() {
-  useSmoothScroll()
   const location = useLocation()
-  const reducedMotion = useReducedMotion()
+  const page = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    page.current?.focus({ preventScroll: true })
   }, [location.pathname])
 
   return (
     <>
       <Header />
-      <AnimatePresence mode="wait">
-        <motion.div
-          id="page-content"
-          tabIndex={-1}
-          key={location.pathname}
-          initial={{ opacity: reducedMotion ? 1 : 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: reducedMotion ? 1 : 0 }}
-          transition={{ duration: reducedMotion ? 0 : 0.2 }}
-        >
+      <div id="page-content" ref={page} tabIndex={-1}>
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/films" element={<WorkList medium="film" />} />
@@ -47,8 +36,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-        </motion.div>
-      </AnimatePresence>
+      </div>
     </>
   )
 }

@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom'
 import type { Photograph } from '../data/photography'
 import { useI18n } from '../i18n/I18nContext'
 import { editorial as e } from '../i18n/editorial'
-import { getLenis } from '../hooks/useSmoothScroll'
 import PhotoImage from './PhotoImage'
 
 type Props = { photos: Photograph[]; index: number; onChange: (index: number) => void; onClose: () => void }
@@ -18,15 +17,11 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
     const element = dialog.current!
     const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
     const overflow = document.body.style.overflow
-    const lenis = getLenis()
-    const wasStopped = lenis?.isStopped
     element.showModal()
     document.body.style.overflow = 'hidden'
-    lenis?.stop()
     return () => {
       element.close()
       document.body.style.overflow = overflow
-      if (!wasStopped) lenis?.start()
       trigger?.focus({ preventScroll: true })
     }
   }, [])

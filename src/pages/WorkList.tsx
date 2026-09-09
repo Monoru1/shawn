@@ -15,8 +15,7 @@ export default function WorkList({ medium }: { medium: Medium }) {
     <Seo title={title} description={intro} />
     <header className="film-index__intro">
       <div className="section-label micro"><span>Shawn N. Hounkpatin</span><span>{String(list.length).padStart(2, '0')} {title}</span></div>
-      <h1>{title}</h1>
-      <p>{intro}</p>
+      <div className="film-index__title"><h1>{title}</h1><p>{intro}</p></div>
     </header>
 
     <div className="film-index__list">

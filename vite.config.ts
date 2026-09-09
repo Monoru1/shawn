@@ -7,8 +7,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          motion: ['motion/react'],
-          cinema: ['gsap', 'gsap/ScrollTrigger', 'lenis'],
           router: ['react-router-dom'],
         },
       },

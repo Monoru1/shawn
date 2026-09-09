@@ -18,7 +18,7 @@ export default function WorkDetail() {
   const backLabel = t(work.medium === 'film' ? d.work.backFilms : d.work.backPhoto)
 
   return <main id="main-content" className={`project project--${work.medium}`}>
-    <Seo title={t(work.title)} description={t(work.statement)} />
+    <Seo title={t(work.title)} description={t(work.statement)} image={work.cover.src} type="article" />
     <header className="project__header">
       <Link to={backPath} className="project__back">{backLabel}</Link>
       <div className="project__number micro">Shawn N. Hounkpatin / {work.year}</div>
@@ -37,7 +37,7 @@ export default function WorkDetail() {
     </section> : <figure className="project__cover"><ArtworkImage asset={work.cover} eager sizes="100vw" /><figcaption>{t(work.location)} / {work.year}</figcaption></figure>}
 
     <section className="project__story">
-      <span className="micro">{t(d.work.statement)}</span>
+      <span className="micro">{t(work.medium === 'film' ? d.work.filmNote : d.work.seriesNote)}</span>
       <div><blockquote>{t(work.statement)}</blockquote>{work.body.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}</div>
     </section>
 

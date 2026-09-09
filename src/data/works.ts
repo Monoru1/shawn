@@ -44,8 +44,8 @@ export const works: Work[] = [
         en: 'Produced by Kerawa Studio, the documentary listens to people in Avloh and observes solutions built with communities and WACA project partners.',
       },
       {
-        fr: "Le documentaire choisit l'immersion et le récit humain : faire ressentir avant d'expliquer, puis ouvrir la conversation.",
-        en: 'The documentary chooses immersion and human storytelling: feeling before explaining, then opening the conversation.',
+        fr: "La caméra reste auprès des habitants, entre le village et l'océan, pour relier les transformations du littoral à leur quotidien.",
+        en: 'The camera stays close to residents, between the village and the ocean, connecting changes along the coast to daily life.',
       },
     ],
     credits: [
@@ -71,7 +71,7 @@ export const works: Work[] = [
     title: { fr: 'My Lover', en: 'My Lover' },
     category: { fr: 'Court-metrage experimental', en: 'Experimental short film' },
     role: { fr: 'Réalisation, image & montage', en: 'Director, cinematography & editor' },
-    location: { fr: 'Lieu non publié', en: 'Location unpublished' },
+    location: { fr: 'Lieu non communiqué', en: 'Location not disclosed' },
     statement: {
       fr: "Des vers introspectifs de Naëtt Mbaye deviennent le point de départ d’un court métrage expérimental sur l’amour.",
       en: 'Introspective verses by Naëtt Mbaye become the starting point for an experimental short film about love.',
@@ -141,7 +141,7 @@ export const works: Work[] = [
     medium: 'photo',
     year: '2025',
     order: 4,
-    title: { fr: 'Enchantresse', en: 'Enchantress' },
+    title: { fr: 'Enchantresse', en: 'Enchantresse' },
     category: { fr: 'Recherche photographique', en: 'Photographic study' },
     role: { fr: 'Photographie & direction artistique', en: 'Photography & art direction' },
     location: { fr: 'Grand-Popo, Bénin', en: 'Grand-Popo, Benin' },

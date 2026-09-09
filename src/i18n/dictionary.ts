@@ -85,7 +85,8 @@ export const dictionary = {
   work: {
     backFilms: { fr: '← Tous les films', en: '← All films' },
     backPhoto: { fr: '← Toute la photographie', en: '← All photography' },
-    statement: { fr: "Note d'intention", en: "Director's note" },
+    filmNote: { fr: 'À propos du film', en: 'About the film' },
+    seriesNote: { fr: 'À propos de la série', en: 'About the series' },
     credits: { fr: 'Crédits', en: 'Credits' },
     partners: { fr: 'Partenaires', en: 'Partners' },
     next: { fr: 'Projet suivant', en: 'Next project' },
@@ -96,8 +97,8 @@ export const dictionary = {
   list: {
     filmsTitle: { fr: 'Films', en: 'Films' },
     filmsIntro: {
-      fr: 'Deux films, deux échelles : une côte qui disparaît et une intimité qui se cherche. Réalisation, image et montage par Shawn.',
-      en: 'Two films, two scales: a disappearing coastline and an intimacy in search of itself. Directed, shot and edited by Shawn.',
+      fr: 'Documentaire et film expérimental. Deux récits réalisés et mis en images par Shawn depuis Cotonou.',
+      en: 'Documentary and experimental film. Two stories directed and photographed by Shawn from Cotonou.',
     },
     photoTitle: { fr: 'Photographie', en: 'Photography' },
     photoIntro: {
