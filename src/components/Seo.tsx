@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useI18n } from '../i18n/I18nContext'
+import { localizedPath } from '../i18n/routes'
 
 type Props = { title: string; description: string; image?: string; type?: 'website' | 'article' | 'profile' }
 
@@ -11,6 +12,17 @@ function setMeta(selector: string, attr: string, value: string) {
     document.head.appendChild(el)
   }
   el.setAttribute('content', value)
+}
+
+function setAlternate(hrefLang: 'fr' | 'en', href: string) {
+  let link = document.head.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hrefLang}"]`)
+  if (!link) {
+    link = document.createElement('link')
+    link.rel = 'alternate'
+    link.hreflang = hrefLang
+    document.head.appendChild(link)
+  }
+  link.href = href
 }
 
 export default function Seo({ title, description, image, type = 'website' }: Props) {
@@ -38,6 +50,9 @@ export default function Seo({ title, description, image, type = 'website' }: Pro
       document.head.appendChild(canonicalLink)
     }
     canonicalLink.href = canonical
+    const current = `${window.location.pathname}${window.location.search}${window.location.hash}`
+    setAlternate('fr', `${window.location.origin}${localizedPath(current, 'fr')}`)
+    setAlternate('en', `${window.location.origin}${localizedPath(current, 'en')}`)
   }, [title, description, image, type, lang])
   return null
 }

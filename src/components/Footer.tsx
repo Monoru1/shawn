@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from './LocalizedLink'
 import { useI18n } from '../i18n/I18nContext'
 import { editorial as e } from '../i18n/editorial'
 import { CONTACT_EMAIL, INSTAGRAM_PERSONAL } from '../i18n/dictionary'

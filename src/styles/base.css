@@ -1,10 +1,11 @@
 :root {
-  --paper: #f3f3ef;
-  --paper-deep: #e8e8e1;
-  --ink: #171713;
-  --muted: #686861;
-  --line: #cdcdc5;
-  --signal: #d3482f;
+  /* Palette éditoriale unique : papier, encre et vert de repère. */
+  --paper: #f8f8f4;
+  --paper-deep: #e8e9e3;
+  --ink: #22241f;
+  --muted: #585c53;
+  --line: #cdcec7;
+  --signal: #394f39;
   --display: 'Spectral', Georgia, serif;
   --ui: 'IBM Plex Sans', Arial, sans-serif;
   --mono: 'DM Mono', ui-monospace, monospace;

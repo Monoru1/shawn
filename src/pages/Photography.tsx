@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
+import { Link } from '../components/LocalizedLink'
 import { useI18n } from '../i18n/I18nContext'
 import { editorial as e } from '../i18n/editorial'
 import { photographs, type PhotoCategory } from '../data/photography'

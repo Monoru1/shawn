@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { Link, NavLink } from './LocalizedLink'
 import { useI18n } from '../i18n/I18nContext'
 import { editorial as e } from '../i18n/editorial'
 

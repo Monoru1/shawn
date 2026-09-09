@@ -1,5 +1,4 @@
 /* Living archive: complete frames, marginal notes, and a quiet reading scale. */
-:root { --paper: #f8f8f4; --ink: #22241f; --muted: #585c53; --signal: #394f39; }
 .micro, .archive-label { font-family: var(--mono); font-size: .75rem; line-height: 1.5; letter-spacing: .015em; text-transform: uppercase; }
 .site-navigation a, .site-language { font-size: .875rem; }
 .site-mark { font-family: var(--ui); font-size: 1rem; }
@@ -23,7 +22,7 @@
 .encounter-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12%; padding: 0 6%; }
 .encounter-pair figure:first-child { padding-right: 12%; }
 .encounter-pair figure:last-child { margin-top: 9rem; }
-.encounter-pair figcaption { display: grid; grid-template-columns: 2rem 1fr; gap: .75rem; margin-top: 1rem; }
+.encounter-pair figcaption { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: start; gap: 1rem; margin-top: 1rem; }
 .encounter-pair h3 { font-family: var(--display); font-size: 1.5rem; }
 .encounter-pair figcaption p { font-size: .875rem; margin-top: .4rem; }
 .encounter-pair figcaption p:last-child { margin-top: .9rem; max-width: 36ch; }
@@ -119,6 +118,7 @@
   .opening-note > span, .opening-note > a { grid-column: 1 / -1; justify-self: start; } .opening-note h2 { margin: 0; font-size: 2rem; } .opening-note p { font-size: .9375rem; }
   .living-selection, .living-films { padding-top: 4rem; } .archive-section-head { display: block; margin-bottom: 2rem; } .archive-section-head a { display: inline-block; margin-top: .75rem; }
   .encounter-pair { grid-template-columns: minmax(0, 1fr); gap: 3rem; } .encounter-pair figure:first-child { padding-right: 15%; } .encounter-pair figure:last-child { margin-top: 0; padding-left: 15%; }
+  .encounter-pair figcaption { grid-template-columns: 1fr; gap: .45rem; }
   .film-pair { grid-template-columns: minmax(0, 1fr); gap: 3rem; } .film-pair h3 { font-size: 1.75rem; }
   .ongoing-work { padding-block: 4rem; } .ongoing-work > a { grid-row: 1; } .ongoing-work p { max-width: 45ch; }
   .home-index, .home-person { padding-block: 2rem 3rem; } .home-index h2, .home-person h2 { font-size: 2rem; max-width: none; }

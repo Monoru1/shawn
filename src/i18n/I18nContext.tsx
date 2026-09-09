@@ -1,5 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import type { Lang } from './dictionary'
+import { languageFromPath, localizedPath } from './routes'
 
 type Localized = { fr: string; en: string }
 
@@ -22,15 +24,25 @@ function detectLang(): Lang {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(detectLang)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [lang, setLangState] = useState<Lang>(() => languageFromPath(location.pathname) === 'en' ? 'en' : detectLang())
+
+  useEffect(() => {
+    const routeLang = languageFromPath(location.pathname)
+    if (lang !== routeLang) setLangState(routeLang)
+  }, [lang, location.pathname])
 
   useEffect(() => {
     document.documentElement.lang = lang
     window.localStorage.setItem(STORAGE_KEY, lang)
   }, [lang])
 
-  const setLang = useCallback((l: Lang) => setLangState(l), [])
-  const toggle = useCallback(() => setLangState(l => (l === 'fr' ? 'en' : 'fr')), [])
+  const setLang = useCallback((next: Lang) => {
+    setLangState(next)
+    navigate(localizedPath(`${location.pathname}${location.search}${location.hash}`, next))
+  }, [location.hash, location.pathname, location.search, navigate])
+  const toggle = useCallback(() => setLang(lang === 'fr' ? 'en' : 'fr'), [lang, setLang])
   const t = useCallback((entry: Localized) => entry[lang], [lang])
 
   const value = useMemo(() => ({ lang, setLang, toggle, t }), [lang, setLang, toggle, t])
@@ -42,4 +54,3 @@ export function useI18n() {
   if (!ctx) throw new Error('useI18n must be used inside I18nProvider')
   return ctx
 }
-

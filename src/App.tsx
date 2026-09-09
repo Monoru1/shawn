@@ -27,6 +27,7 @@ export default function App() {
       <div id="page-content" ref={page} tabIndex={-1}>
           <Routes location={location}>
             <Route path="/" element={<Home />} />
+            <Route path="/en" element={<Home />} />
             <Route path="/films" element={<WorkList medium="film" />} />
             <Route path="/films/:slug" element={<WorkDetail />} />
             <Route path="/photographie" element={<Photography />} />
@@ -35,6 +36,14 @@ export default function App() {
             <Route path="/archive" element={<Archive />} />
             <Route path="/shawn" element={<Shawn />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/en/films" element={<WorkList medium="film" />} />
+            <Route path="/en/films/:slug" element={<WorkDetail />} />
+            <Route path="/en/photography" element={<Photography />} />
+            <Route path="/en/photography/:slug" element={<WorkDetail />} />
+            <Route path="/en/kerawa" element={<Kerawa />} />
+            <Route path="/en/archive" element={<Archive />} />
+            <Route path="/en/about" element={<Shawn />} />
+            <Route path="/en/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

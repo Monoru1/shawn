@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from './LocalizedLink'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
 import { works, pathFor, type Medium } from '../data/works'

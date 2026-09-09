@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../components/LocalizedLink'
 import ArtworkImage from '../components/ArtworkImage'
 import PhotoImage from '../components/PhotoImage'
 import Seo from '../components/Seo'

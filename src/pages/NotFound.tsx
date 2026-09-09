@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../components/LocalizedLink'
 import { useI18n } from '../i18n/I18nContext'
 import { dictionary as d } from '../i18n/dictionary'
 import Seo from '../components/Seo'
@@ -14,4 +14,3 @@ export default function NotFound() {
     </main>
   )
 }
-
