@@ -43,6 +43,7 @@ export const editorial = {
   galleryNote: { fr: 'Photographies de Shawn N. Hounkpatin. Chaque image s’ouvre avec sa légende.', en: 'Photographs by Shawn N. Hounkpatin. Open an image to read its caption.' },
   all: { fr: 'Tout', en: 'All' },
   portrait: { fr: 'Portraits', en: 'Portraits' },
+  editorial: { fr: 'Éditorial', en: 'Editorial' },
   research: { fr: 'Recherche', en: 'Personal work' },
   documentary: { fr: 'Documentaire', en: 'Documentary' },
   filters: { fr: 'Filtrer les photographies', en: 'Filter photographs' },

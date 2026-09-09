@@ -9,7 +9,7 @@ import Seo from '../components/Seo'
 import { photos as projectWorks, pathFor } from '../data/works'
 
 type Filter = PhotoCategory | 'all' | 'projects'
-const filters: Filter[] = ['all', 'portrait', 'research', 'documentary', 'projects']
+const filters: Filter[] = ['all', 'portrait', 'editorial', 'research', 'documentary', 'projects']
 
 export default function Photography() {
   const { t } = useI18n()
