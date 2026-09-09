@@ -69,10 +69,10 @@ export default function Shawn() {
     <section className="artist-works" aria-labelledby="artist-works-title">
       <div><span className="archive-label">Sélection</span><h2 id="artist-works-title">{t({ fr: 'Voir les projets en images.', en: 'See the projects in images.' })}</h2></div>
       <div>{photos.map(work => <Link key={work.slug} to={pathFor(work)}>
-        <strong>{t(work.title)}</strong><small>{t(work.location)} · {work.year}</small><i aria-hidden="true">↗</i>
+        <strong>{t(work.title)}</strong><small>{t(work.location)} · {work.year}</small>
       </Link>)}</div>
     </section>
 
-    <div className="artist-page__source"><a className="note-link" href={mediaSources.portrait} target="_blank" rel="noreferrer">{t(e.readPortrait)} ↗</a><Link className="note-link" to="/kerawa">{t(e.studioLink)} ↗</Link></div>
+    <div className="artist-page__source"><a className="note-link" href={mediaSources.portrait} target="_blank" rel="noreferrer">{t(e.readPortrait)}</a><Link className="note-link" to="/kerawa">{t(e.studioLink)}</Link></div>
   </main>
 }

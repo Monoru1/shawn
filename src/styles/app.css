@@ -178,8 +178,6 @@ a.index__row:hover .index__name { color: var(--sea-light); }
 .index__medium--photo { color: var(--sand); }
 .index__cat, .index__loc { font-size: 12px; opacity: 0.6; }
 .index__loc { display: flex; justify-content: space-between; gap: 1rem; }
-.index__loc i { font-style: normal; opacity: 0; transition: opacity 0.3s, transform 0.3s; }
-a.index__row:hover .index__loc i { opacity: 1; transform: translate(3px, -3px); }
 
 .index__peek {
   position: absolute;

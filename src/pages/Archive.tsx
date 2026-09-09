@@ -49,7 +49,7 @@ export default function Archive() {
         onFocus={() => setActiveId(entry.id)}
         onTouchStart={() => { if (activeEntry?.id !== entry.id) { touchPreview.current = entry.id; setActiveId(entry.id) } }}
         onClick={event => { if (touchPreview.current === entry.id) { event.preventDefault(); touchPreview.current = null } }}>
-        <span>{entry.year || t({ fr: 'En cours', en: 'Ongoing' })}</span><div><h2>{entry.title}</h2><p>{t(entry.relation)}</p></div><span>{t(entry.placeLabel)}</span><span>{t(entry.medium === 'photo' ? { fr: 'Photographie', en: 'Photography' } : { fr: 'Cinéma', en: 'Film' })} ↗</span>
+        <span>{entry.year || t({ fr: 'En cours', en: 'Ongoing' })}</span><div><h2>{entry.title}</h2><p>{t(entry.relation)}</p></div><span>{t(entry.placeLabel)}</span><span>{t(entry.medium === 'photo' ? { fr: 'Photographie', en: 'Photography' } : { fr: 'Cinéma', en: 'Film' })}</span>
       </Link>)}</div>
       {preview && <aside className="archive-preview" aria-live="polite">
         <span className="archive-label">{t({ fr: 'Aperçu de l’œuvre', en: 'Work preview' })}</span>

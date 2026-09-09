@@ -34,7 +34,7 @@ export default function WorkDetail() {
 
     {work.video ? <section className="project__screen" aria-label={t(d.work.watch)}>
       <VideoPlayer embedUrl={work.video.embedUrl} poster={work.cover.src} title={t(work.title)} playLabel={t(d.work.watch)} meta={`${t(work.category)} / ${work.year}`} />
-      <div className="project__screen-credit"><span>{t(work.role)}</span><a href={work.video.watchUrl} target="_blank" rel="noreferrer">YouTube ↗</a></div>
+      <div className="project__screen-credit"><span>{t(work.role)}</span><a href={work.video.watchUrl} target="_blank" rel="noreferrer">YouTube</a></div>
     </section> : <figure className="project__cover"><ArtworkImage asset={work.cover} eager sizes="100vw" /><figcaption>{t(work.location)} / {work.year}</figcaption></figure>}
 
     <section className="project__story">
@@ -55,6 +55,6 @@ export default function WorkDetail() {
       {work.partners && <div className="project__partners"><span className="micro">{t(d.work.partners)}</span>{work.partners.map(partner => <p key={partner}>{partner}</p>)}</div>}
     </section>
 
-    <Link className="project__next" to={pathFor(next)}><span className="micro">{t(d.work.next)}</span><strong>{t(next.title)}</strong><i aria-hidden="true">→</i></Link>
+    <Link className="project__next" to={pathFor(next)}><span className="micro">{t(d.work.next)}</span><strong>{t(next.title)}</strong></Link>
   </main>
 }

@@ -46,15 +46,15 @@ export default function Photography() {
     {isProjectView ? <div className="photo-project-grid">
       {projectWorks.map((work, index) => <article className="photo-project-card" key={work.slug}>
         <Link to={pathFor(work)}><img src={work.cover.src} srcSet={work.cover.srcSet} sizes="(max-width: 760px) 100vw, 50vw" width={work.cover.width} height={work.cover.height} alt={t(work.cover.alt)} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} /></Link>
-        <div><span className="photo-caption-place">{t(work.location)} · {work.year}</span><h2>{t(work.title)}</h2><p>{t(work.statement)}</p><Link className="photo-caption-project" to={pathFor(work)}>{t({ fr: 'Lire le projet', en: 'Read the project' })} ↗</Link></div>
+        <div><span className="photo-caption-place">{t(work.location)} · {work.year}</span><h2>{t(work.title)}</h2><p>{t(work.statement)}</p><Link className="photo-caption-project" to={pathFor(work)}>{t({ fr: 'Lire le projet', en: 'Read the project' })}</Link></div>
       </article>)}
     </div> : <div className={`photo-grid photo-grid--${layout}`}>
       {visible.map((photo, index) => <figure key={photo.id} className={`photo-item photo-item--${photo.layout}`}>
         <button type="button" className="photo-open" onClick={() => selectImage(index)} aria-label={`${t(e.open)} — ${t(photo.title)}`} aria-haspopup="dialog">
           <PhotoImage photo={photo} eager={index === 0} sizes={layout === 'index' ? '(max-width: 700px) 45vw, 24vw' : '(max-width: 700px) 90vw, 48vw'} />
-          <span className="photo-open-cue" aria-hidden="true">↗</span>
+          <span className="photo-open-cue" aria-hidden="true">{t({ fr: 'Voir', en: 'View' })}</span>
         </button>
-        <figcaption><span className="photo-caption-title">{t(photo.title)}</span><span className="photo-caption-place">{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><span className="photo-caption-context">{t(photo.context)}</span>{photo.project ? <Link className="photo-caption-project" to={photo.project.href}>{t({ fr: 'Lire la série', en: 'Read the series' })} · {t(photo.project.title)} ↗</Link> : null}</figcaption>
+        <figcaption><span className="photo-caption-title">{t(photo.title)}</span><span className="photo-caption-place">{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><span className="photo-caption-context">{t(photo.context)}</span>{photo.project ? <Link className="photo-caption-project" to={photo.project.href}>{t({ fr: 'Lire la série', en: 'Read the series' })} · {t(photo.project.title)}</Link> : null}</figcaption>
       </figure>)}
     </div>}
     <div className="gallery-end micro"><span>© Shawn N. Hounkpatin</span><span>{t({ fr: 'Prendre le temps de regarder', en: 'Take time to look' })}</span></div>

@@ -22,7 +22,7 @@ export default function WorkList({ medium }: { medium: Medium }) {
       {list.map((work, index) => <article className="film-row" key={work.slug}>
         <Link to={pathFor(work)} className="film-row__image">
           <ArtworkImage asset={work.cover} eager={index === 0} sizes="(max-width: 760px) 100vw, 72vw" />
-          <span>{t(d.work.watch)} <i aria-hidden="true">↗</i></span>
+          <span>{t(d.work.watch)}</span>
         </Link>
         <div className="film-row__meta">
           <span className="micro">{t(work.role)}</span>

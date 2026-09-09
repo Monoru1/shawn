@@ -53,9 +53,9 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
           if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1)
           touch.current = null
         }}>
-        <button type="button" className="lightbox-arrow" aria-label={t(e.previous)} onClick={() => step(-1)} disabled={photos.length < 2}>←</button>
+        <button type="button" className="lightbox-arrow lightbox-arrow--previous" aria-label={t(e.previous)} onClick={() => step(-1)} disabled={photos.length < 2}><span aria-hidden="true" /></button>
         <figure className="lightbox-image"><PhotoImage key={photo.id} photo={photo} eager sizes="(max-width: 700px) 90vw, 80vw" /></figure>
-        <button type="button" className="lightbox-arrow" aria-label={t(e.next)} onClick={() => step(1)} disabled={photos.length < 2}>→</button>
+        <button type="button" className="lightbox-arrow lightbox-arrow--next" aria-label={t(e.next)} onClick={() => step(1)} disabled={photos.length < 2}><span aria-hidden="true" /></button>
       </div>
       <div className="lightbox-bottom">
         <div aria-live="polite" aria-atomic="true"><div className="lightbox-caption"><p>{t(photo.title)}</p><span>{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><small>{t(photo.context)}</small><em>{t({ fr: 'Rester un instant : le lieu continue de parler après le regard.', en: 'Stay a little: the place keeps speaking after the first look.' })}</em></div></div>

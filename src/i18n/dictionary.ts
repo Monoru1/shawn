@@ -83,8 +83,8 @@ export const dictionary = {
   },
 
   work: {
-    backFilms: { fr: '← Tous les films', en: '← All films' },
-    backPhoto: { fr: '← Toute la photographie', en: '← All photography' },
+    backFilms: { fr: 'Tous les films', en: 'All films' },
+    backPhoto: { fr: 'Toute la photographie', en: 'All photography' },
     filmNote: { fr: 'À propos du film', en: 'About the film' },
     seriesNote: { fr: 'À propos de la série', en: 'About the series' },
     credits: { fr: 'Crédits', en: 'Credits' },

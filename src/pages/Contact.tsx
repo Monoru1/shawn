@@ -25,7 +25,6 @@ export default function Contact() {
         <span className="archive-label">0{index + 1} / {t(item.label)}</span>
         <strong>{item.value}</strong>
         <p>{t(item.note)}</p>
-        <i aria-hidden="true">↗</i>
       </a>)}
     </section>
 

@@ -27,9 +27,9 @@ export default function Kerawa() {
 
     <section className="studio-page__works" aria-labelledby="studio-works-title">
       <h2 id="studio-works-title">{t(e.producedWorks)}</h2>
-      {films.map(film => <Link to={pathFor(film)} key={film.slug}><strong>{t(film.title)}</strong><small>{film.year} / {t(film.role)}</small><i aria-hidden="true">↗</i></Link>)}
+      {films.map(film => <Link to={pathFor(film)} key={film.slug}><strong>{t(film.title)}</strong><small>{film.year} / {t(film.role)}</small></Link>)}
     </section>
 
-    <div className="studio-page__links"><Link to="/">← Shawn N. Hounkpatin</Link><a href={INSTAGRAM_STUDIO} target="_blank" rel="noreferrer">Instagram / @kerawa.space ↗</a></div>
+    <div className="studio-page__links"><Link to="/">Shawn N. Hounkpatin</Link><a href={INSTAGRAM_STUDIO} target="_blank" rel="noreferrer">Instagram / @kerawa.space</a></div>
   </main>
 }

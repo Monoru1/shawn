@@ -24,7 +24,7 @@ export default function Header() {
       <Link to="/" className="site-mark" aria-label="Shawn N. Hounkpatin">Shawn<span> N. Hounkpatin</span></Link>
       <nav id="site-navigation" className={`site-navigation${open ? ' is-open' : ''}`} aria-label={t(e.navigation)}>
         {links.map(link => <NavLink to={link.to} key={link.to}>{t(link.label)}</NavLink>)}
-        <NavLink to="/contact">{t(e.contact)} <span aria-hidden="true">↗</span></NavLink>
+        <NavLink to="/contact">{t(e.contact)}</NavLink>
       </nav>
       <div className="site-tools">
         <button type="button" className="site-language" onClick={toggle} aria-label={t(e.changeLanguage)}><span className={lang === 'fr' ? 'selected' : ''}>FR</span><span aria-hidden="true">/</span><span className={lang === 'en' ? 'selected' : ''}>EN</span></button>

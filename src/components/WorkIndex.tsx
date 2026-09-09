@@ -52,7 +52,7 @@ export default function WorkIndex() {
             <span className={`index__medium index__medium--${w.medium}`}>{t(d.medium[w.medium])}</span>
             <span className="index__cat">{t(w.category)}</span>
             <span className="index__loc">
-              {t(w.location)} <i aria-hidden="true">↗</i>
+              {t(w.location)}
             </span>
             <img className="index__peek" src={w.cover.src} alt="" loading="lazy" aria-hidden="true" />
           </Link>
