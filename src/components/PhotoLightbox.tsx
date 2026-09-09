@@ -61,6 +61,12 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
         <div aria-live="polite" aria-atomic="true"><span className="micro">{String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span><div className="lightbox-caption"><p>{t(photo.title)}</p><span>{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><small>{t(photo.context)}</small></div></div>
         <span className="micro lightbox-help">{t(e.keyboard)}</span>
       </div>
+      <div className="lightbox-album" aria-label={t({ fr: 'Album de la série', en: 'Series album' })}>
+        {photos.map((item, itemIndex) => <button type="button" key={item.id} className={itemIndex === index ? 'is-current' : ''} aria-label={`${t({ fr: 'Voir', en: 'View' })} ${t(item.title)}`} aria-current={itemIndex === index ? 'true' : undefined} onClick={() => onChange(itemIndex)}>
+          <PhotoImage photo={item} eager={itemIndex === index} sizes="120px" />
+          <span>{String(itemIndex + 1).padStart(2, '0')}</span>
+        </button>)}
+      </div>
     </dialog>, document.body,
   )
 }

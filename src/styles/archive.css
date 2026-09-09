@@ -61,10 +61,33 @@
 .archive-preview small { max-width: 44ch; }
 .archive-empty { padding: 3rem 0; }
 .archive-empty button { text-decoration: underline; padding: 1rem 0; }
-.artist-story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 10%; margin-top: 4rem; }
-.artist-story h2 { font-family: var(--display); font-size: 2rem; margin-bottom: 1.25rem; }
-.artist-story p { font-size: 1.125rem; line-height: 1.8; max-width: 48ch; }
-.artist-story h2:not(:first-child) { margin-top: 3rem; }
+.artist-page--longform { max-width: 1480px; padding-bottom: clamp(5rem, 10vw, 11rem); }
+.artist-page__header { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); gap: clamp(2rem, 7vw, 8rem); align-items: end; padding-bottom: clamp(4rem, 9vw, 9rem); }
+.artist-page__header > span, .artist-page__header h1 { grid-column: 1; }
+.artist-page__header h1 { margin: 1.2rem 0 0; font-size: clamp(3.6rem, 8.2vw, 9.6rem); line-height: .82; letter-spacing: -.045em; }
+.artist-page__header > p { grid-column: 2; grid-row: 2; max-width: 31ch; font-size: 1rem; line-height: 1.8; }
+.artist-origin { display: grid; grid-template-columns: minmax(0, .78fr) minmax(18rem, 1fr); gap: clamp(2.5rem, 9vw, 11rem); align-items: end; padding-bottom: clamp(5rem, 11vw, 12rem); }
+.artist-origin figure { max-width: 34rem; }
+.artist-origin figure img { aspect-ratio: 2 / 3; object-fit: cover; }
+.artist-origin > div { max-width: 43ch; padding-bottom: 3%; }
+.artist-origin__pull { margin: 1.75rem 0 2.2rem; font-family: var(--display); font-size: clamp(2.05rem, 4vw, 4.5rem); line-height: .98; }
+.artist-origin > div > p:last-child { font-size: 1rem; line-height: 1.8; }
+.artist-chapters { border-top: 1px solid var(--ink); }
+.artist-chapter { display: grid; grid-template-columns: minmax(4rem, .3fr) minmax(0, 1fr); gap: clamp(2rem, 7vw, 8rem); padding: clamp(3.3rem, 7vw, 7.5rem) 0; border-bottom: 1px solid var(--line); }
+.artist-chapter > span { color: var(--signal); }
+.artist-chapter h2 { max-width: 15ch; margin-bottom: 1.6rem; font-family: var(--display); font-size: clamp(2.2rem, 4.3vw, 5rem); font-weight: 400; line-height: .94; }
+.artist-chapter p { max-width: 57ch; font-size: 1rem; line-height: 1.85; }
+.artist-chapter p + p { margin-top: 1.15rem; }
+.artist-works { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(2rem, 8vw, 10rem); padding: clamp(5rem, 11vw, 12rem) 0; }
+.artist-works h2 { max-width: 10ch; margin-top: 1.2rem; font-family: var(--display); font-size: clamp(2.4rem, 4.8vw, 5.5rem); font-weight: 400; line-height: .94; }
+.artist-works > div:last-child { border-top: 1px solid var(--ink); }
+.artist-works a { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) minmax(8rem, .65fr) auto; align-items: baseline; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+.artist-works a > span, .artist-works small { color: var(--muted); font-family: var(--mono); font-size: .75rem; text-transform: uppercase; }
+.artist-works strong { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 3.4rem); font-weight: 400; line-height: .95; }
+.artist-works i { font-size: 1.4rem; font-style: normal; transition: transform .2s var(--ease); }
+.artist-works a:hover i { transform: translate(4px, -4px); }
+.artist-page__source { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.artist-page__source .note-link { margin-top: 0; }
 .photo-caption-place, .photo-caption-context, .gallery-toolbar button, .project__facts dt, .project__back, .project__number { font-size: .8125rem; }
 .photo-caption-context { line-height: 1.65; }
 .gallery-intro p, .project__story p, .project__credits dd { font-size: 1rem; }
@@ -90,7 +113,7 @@
 @media (max-width: 1000px) { .opening-work { gap: 2rem; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } .opening-note h2 { font-size: 2.5rem; } .encounter-pair { gap: 7%; padding: 0; } .ongoing-work { gap: 2rem; } }
 @media (max-width: 760px) {
   .archive-masthead { display: block; padding-block: 1.5rem; } .archive-masthead h1 { font-size: 1.75rem; } .archive-masthead p { margin-top: .75rem; }
-  .opening-work, .ongoing-work, .home-index, .home-person, .artist-story { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .opening-work, .ongoing-work, .home-index, .home-person, .artist-origin, .artist-works { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .opening-note { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 1.5rem; padding-bottom: 0; }
   .opening-note > span, .opening-note > a { grid-column: 1 / -1; justify-self: start; } .opening-note h2 { margin: 0; font-size: 2rem; } .opening-note p { font-size: .9375rem; }
   .living-selection, .living-films { padding-top: 4rem; } .archive-section-head { display: block; margin-bottom: 2rem; } .archive-section-head a { display: inline-block; margin-top: .75rem; }
@@ -100,6 +123,6 @@
   .home-index, .home-person { padding-block: 2rem 3rem; } .home-index h2, .home-person h2 { font-size: 2rem; max-width: none; }
   .archive-page h1, .artist-page h1, .gallery-heading h1, .project__header h1 { font-size: 2.5rem; overflow-wrap: anywhere; }
   .archive-controls p { margin-left: 0; } .archive-explorer { display: flex; flex-direction: column; gap: 2rem; } .archive-preview { position: relative; top: auto; order: -1; width: 100%; } .archive-preview > img { max-height: 62svh; } .archive-row { grid-template-columns: 3.5rem minmax(0, 1fr); } .archive-row > span:nth-child(3), .archive-row > span:nth-child(4) { grid-column: 2; }
-  .archive-row h2 { font-size: 1.5rem; } .artist-story figure { max-width: 26rem; } .artist-story p { font-size: 1rem; }
+  .archive-row h2 { font-size: 1.5rem; } .artist-page__header { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 4rem; } .artist-page__header > p { grid-column: 1; grid-row: auto; } .artist-origin figure { max-width: 26rem; } .artist-origin { padding-bottom: 4rem; } .artist-origin__pull { font-size: 2.25rem; } .artist-chapter { grid-template-columns: 1fr; gap: 1rem; padding-block: 3.4rem; } .artist-chapter h2 { font-size: 2.35rem; } .artist-works { padding-block: 4.5rem; } .artist-works a { grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: .75rem; } .artist-works small { grid-column: 2; } .artist-works i { grid-row: 1; grid-column: 3; }
   .contact-address { font-size: 1.5rem; } .footer-contact__actions { justify-content: flex-start; } .contact-page { padding-top: 2rem; } .contact-page__header { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 4rem; } .contact-page__header > p { grid-column: 1; grid-row: auto; font-size: 1rem; } .contact-page__links > a { grid-template-columns: 1fr auto; gap: .75rem 1rem; } .contact-page__links > a > span, .contact-page__links > a > p { grid-column: 1; } .contact-page__links > a > i { grid-row: 1; grid-column: 2; } .contact-page__links strong { font-size: 1.9rem; } .gallery-filters { flex-wrap: wrap; gap: 1rem; } .gallery-intro { flex-wrap: wrap; }
 }
