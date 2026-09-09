@@ -93,6 +93,22 @@ export const media = {
       asset('/media/works/donli-2-800.webp', 800, 640, { fr: 'Lady Donli en chemise rouge rayée, à Cotonou.', en: 'Lady Donli in a red striped shirt, in Cotonou.' }, '/media/works/donli-2-400.webp 400w, /media/works/donli-2-600.webp 600w, /media/works/donli-2-800.webp 800w'),
     ],
   },
+  dailyPaperConverse: {
+    cover: asset(
+      '/media/works/daily-paper-converse-1-800.webp',
+      800,
+      533,
+      {
+        fr: 'Groupe de personnes assises sur une plage au Sénégal pour la campagne Daily Paper × Converse.',
+        en: 'A group seated on a Senegalese beach for the Daily Paper × Converse campaign.',
+      },
+      '/media/works/daily-paper-converse-1-400.webp 400w, /media/works/daily-paper-converse-1-600.webp 600w, /media/works/daily-paper-converse-1-800.webp 800w',
+    ),
+    gallery: [
+      asset('/media/works/daily-paper-converse-2-800.webp', 800, 999, { fr: 'Des chaussures Converse aux semelles vertes, jaunes et rouges au bord d’un muret.', en: 'Converse shoes with green, yellow and red soles at the edge of a low wall.' }, '/media/works/daily-paper-converse-2-400.webp 400w, /media/works/daily-paper-converse-2-600.webp 600w, /media/works/daily-paper-converse-2-800.webp 800w'),
+      asset('/media/works/daily-paper-converse-3-800.webp', 800, 652, { fr: 'Un modèle assis devant une façade, une Converse à semelle colorée au premier plan.', en: 'A model seated in front of a façade, with a Converse shoe with a coloured sole in the foreground.' }, '/media/works/daily-paper-converse-3-400.webp 400w, /media/works/daily-paper-converse-3-600.webp 600w, /media/works/daily-paper-converse-3-800.webp 800w'),
+    ],
+  },
 } as const
 
 export const mediaSources = {

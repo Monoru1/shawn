@@ -31,7 +31,7 @@ export default function Archive() {
     <header><span className="archive-label">Shawn N. Hounkpatin</span><h1>{t({ fr: 'Index des œuvres', en: 'Index of works' })}</h1></header>
     <div className="archive-controls">
       <label>{t({ fr: 'Lieu', en: 'Place' })}<select value={place} onChange={event => update('place', event.target.value)}>
-        <option value="">{t({ fr: 'Tous les lieux', en: 'All places' })}</option><option value="cotonou">Cotonou</option><option value="adjarra">Adjarra</option><option value="grand-popo">Grand-Popo</option><option value="benin">{t({ fr: 'Côte béninoise', en: 'Beninese coast' })}</option>
+        <option value="">{t({ fr: 'Tous les lieux', en: 'All places' })}</option><option value="cotonou">Cotonou</option><option value="adjarra">Adjarra</option><option value="grand-popo">Grand-Popo</option><option value="benin">{t({ fr: 'Côte béninoise', en: 'Beninese coast' })}</option><option value="senegal">{t({ fr: 'Sénégal', en: 'Senegal' })}</option><option value="archive">{t({ fr: 'Lieu non communiqué', en: 'Location not disclosed' })}</option>
       </select></label>
       <label>{t({ fr: 'Médium', en: 'Medium' })}<select value={medium} onChange={event => update('medium', event.target.value)}>
         <option value="">{t({ fr: 'Tous les médiums', en: 'All media' })}</option><option value="photo">{t({ fr: 'Photographie', en: 'Photography' })}</option><option value="film">{t({ fr: 'Cinéma', en: 'Film' })}</option>
@@ -60,7 +60,7 @@ export default function Archive() {
 
 function previewFor(id: string) {
   const photoById = new Map(photographs.map(photo => [photo.id, photo]))
-  const photoId = { kidjo: 'kidjo-1', donli: 'donli-1', mathias: 'mathias-1', enchantresse: 'enchantresse-1' }[id]
+  const photoId = { 'daily-paper': 'daily-paper-converse-1', kidjo: 'kidjo-1', donli: 'donli-1', mathias: 'mathias-1', enchantresse: 'enchantresse-1', 'journal-archive': 'editorial-54-1' }[id]
   if (photoId) return { kind: 'photo' as const, photo: photoById.get(photoId)! }
   return { kind: 'film' as const, asset: id === 'between' ? media.betweenLandAndOcean.cover : media.myLover.cover }
 }
