@@ -10,6 +10,7 @@ import Kerawa from './pages/Kerawa'
 import NotFound from './pages/NotFound'
 import Archive from './pages/Archive'
 import Shawn from './pages/Shawn'
+import Contact from './pages/Contact'
 
 export default function App() {
   const location = useLocation()
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/kerawa" element={<Kerawa />} />
             <Route path="/archive" element={<Archive />} />
             <Route path="/shawn" element={<Shawn />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

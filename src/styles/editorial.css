@@ -110,6 +110,7 @@
 .photo-caption-title { font-family: var(--display); font-size: 20px; }
 .photo-caption-place { font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
 .photo-caption-context { max-width: 50ch; margin-top: 4px; color: var(--muted); font-size: 13px; }
+.photo-caption-project { display: inline-block; margin-top: 10px; border-bottom: 1px solid currentColor; padding-bottom: 2px; font-size: 13px; }
 .photo-grid--index { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 42px 24px; }
 .photo-grid--index .photo-open { aspect-ratio: 4 / 5; }
 .photo-grid--index .photo-caption-context { display: none; }

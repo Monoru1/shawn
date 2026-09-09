@@ -13,6 +13,7 @@ const routes = [
   { path: '/archive', title: 'Index des œuvres — Shawn N. Hounkpatin', description: 'Index chronologique des films et photographies de Shawn N. Hounkpatin.', image: '/media/works/kidjo-1-800.webp', type: 'website' },
   { path: '/shawn', title: 'Shawn N. Hounkpatin — Profil', description: 'Photographe, cinéaste béninois et fondateur de Kerawa Studio, Shawn travaille depuis Cotonou.', image: '/media/profile/shawn-1200.webp', type: 'profile' },
   { path: '/kerawa', title: 'Kerawa Studio — Fondé par Shawn N. Hounkpatin', description: 'Kerawa Studio produit les films de Shawn et accompagne la création et la promotion du cinéma africain.', image: '/media/films/between-1280.webp', type: 'website' },
+  { path: '/contact', title: 'Contact — Shawn N. Hounkpatin', description: 'Contacter Shawn N. Hounkpatin pour une commande, une collaboration, une projection ou un projet avec Kerawa Studio.', image: '/media/profile/shawn-1200.webp', type: 'website' },
 ]
 
 const escapeAttribute = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')

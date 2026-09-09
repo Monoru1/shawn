@@ -1,6 +1,11 @@
+import { useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import ArtworkImage from '../components/ArtworkImage'
+import PhotoImage from '../components/PhotoImage'
 import Seo from '../components/Seo'
 import { archiveEntries } from '../data/archive'
+import { media } from '../data/media'
+import { photographs } from '../data/photography'
 import { useI18n } from '../i18n/I18nContext'
 
 export default function Archive() {
@@ -9,6 +14,11 @@ export default function Archive() {
   const place = params.get('place') || ''
   const medium = params.get('medium') || ''
   const entries = archiveEntries.filter(entry => (!place || entry.place === place) && (!medium || entry.medium === medium))
+  const [activeId, setActiveId] = useState(entries[0]?.id ?? '')
+  const touchPreview = useRef<string | null>(null)
+  const activeEntry = entries.find(entry => entry.id === activeId) ?? entries[0]
+  const preview = activeEntry ? previewFor(activeEntry.id) : null
+
   const update = (key: string, value: string) => {
     const next = new URLSearchParams(params)
     if (value) next.set(key, value)
@@ -28,9 +38,29 @@ export default function Archive() {
       </select></label>
       <p role="status">{entries.length} {t({ fr: 'entrées', en: 'entries' })}</p>
     </div>
-    <div className="archive-rows">{entries.map(entry => <Link className="archive-row" key={entry.id} to={entry.href}>
-      <span>{entry.year || t({ fr: 'En cours', en: 'Ongoing' })}</span><div><h2>{entry.title}</h2><p>{t(entry.relation)}</p></div><span>{t(entry.placeLabel)}</span><span>{t(entry.medium === 'photo' ? { fr: 'Photographie', en: 'Photography' } : { fr: 'Film', en: 'Film' })} ↗</span>
-    </Link>)}</div>
+
+    {entries.length ? <div className="archive-explorer">
+      <div className="archive-rows">{entries.map(entry => <Link className={`archive-row${entry.id === activeEntry?.id ? ' is-active' : ''}`} key={entry.id} to={entry.href}
+        onMouseEnter={() => setActiveId(entry.id)}
+        onFocus={() => setActiveId(entry.id)}
+        onTouchStart={() => { if (activeEntry?.id !== entry.id) { touchPreview.current = entry.id; setActiveId(entry.id) } }}
+        onClick={event => { if (touchPreview.current === entry.id) { event.preventDefault(); touchPreview.current = null } }}>
+        <span>{entry.year || t({ fr: 'En cours', en: 'Ongoing' })}</span><div><h2>{entry.title}</h2><p>{t(entry.relation)}</p></div><span>{t(entry.placeLabel)}</span><span>{t(entry.medium === 'photo' ? { fr: 'Photographie', en: 'Photography' } : { fr: 'Cinéma', en: 'Film' })} ↗</span>
+      </Link>)}</div>
+      {preview && <aside className="archive-preview" aria-live="polite">
+        <span className="archive-label">{t({ fr: 'Aperçu de l’œuvre', en: 'Work preview' })}</span>
+        {preview.kind === 'photo' ? <PhotoImage photo={preview.photo} eager sizes="(max-width: 760px) 100vw, 44vw" /> : <ArtworkImage asset={preview.asset} eager sizes="(max-width: 760px) 100vw, 44vw" />}
+        <p><strong>{activeEntry.title}</strong><span>{t(activeEntry.placeLabel)} · {activeEntry.year || t({ fr: 'En cours', en: 'Ongoing' })}</span></p>
+        <small>{t({ fr: 'Sur ordinateur : survole une ligne. Sur téléphone : touche une fois pour l’aperçu, une seconde pour ouvrir.', en: 'On desktop: hover a row. On mobile: tap once for a preview, again to open.' })}</small>
+      </aside>}
+    </div> : null}
     {!entries.length ? <div className="archive-empty"><p>{t({ fr: 'Aucune œuvre dans cette sélection.', en: 'No works in this selection.' })}</p><button type="button" onClick={() => setParams({})}>{t({ fr: 'Effacer les filtres', en: 'Clear filters' })}</button></div> : null}
   </main>
+}
+
+function previewFor(id: string) {
+  const photoById = new Map(photographs.map(photo => [photo.id, photo]))
+  const photoId = { kidjo: 'kidjo-1', donli: 'donli-1', mathias: 'mathias-1', enchantresse: 'enchantresse-1' }[id]
+  if (photoId) return { kind: 'photo' as const, photo: photoById.get(photoId)! }
+  return { kind: 'film' as const, asset: id === 'between' ? media.betweenLandAndOcean.cover : media.myLover.cover }
 }

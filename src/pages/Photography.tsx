@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { editorial as e } from '../i18n/editorial'
 import { photographs, type PhotoCategory } from '../data/photography'
@@ -46,7 +46,7 @@ export default function Photography() {
           <PhotoImage photo={photo} eager={index === 0} sizes={layout === 'index' ? '(max-width: 700px) 45vw, 24vw' : '(max-width: 700px) 90vw, 48vw'} />
           <span className="photo-open-cue" aria-hidden="true">↗</span>
         </button>
-        <figcaption><span className="photo-caption-title">{t(photo.title)}</span><span className="photo-caption-place">{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><span className="photo-caption-context">{t(photo.context)}</span></figcaption>
+        <figcaption><span className="photo-caption-title">{t(photo.title)}</span><span className="photo-caption-place">{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><span className="photo-caption-context">{t(photo.context)}</span>{photo.project ? <Link className="photo-caption-project" to={photo.project.href}>{t({ fr: 'Lire la série', en: 'Read the series' })} · {t(photo.project.title)} ↗</Link> : null}</figcaption>
       </figure>)}
     </div>
     <div className="gallery-end micro"><span>© Shawn N. Hounkpatin</span><span>{String(visible.length).padStart(2, '0')} {t(visible.length === 1 ? e.image : e.images)}</span></div>

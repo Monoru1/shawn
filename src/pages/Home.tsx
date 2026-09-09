@@ -21,19 +21,15 @@ export default function Home() {
 
     <section className="opening-work" aria-labelledby="opening-title">
       <figure>
-        <Link to="/photographie/portrait-of-a-genius">
-          <PhotoImage photo={kidjo} eager sizes="(max-width: 760px) 100vw, 65vw" />
-        </Link>
+        <PhotoImage photo={kidjo} eager sizes="(max-width: 760px) 100vw, 65vw" />
         <figcaption>{t(kidjo.place)} · 2026</figcaption>
       </figure>
       <div className="opening-note">
-        <span className="archive-label">01 / {t({ fr: 'Rencontre', en: 'Encounter' })}</span>
-        <h2 id="opening-title">Femi &amp;<br />Sica Kidjo</h2>
-        <p>{t({
-          fr: 'Deux sœurs DJ, de retour à Cotonou. Une rencontre dans les rues d’Akpakpa.',
-          en: 'Two DJ sisters, back in Cotonou. An encounter in the streets of Akpakpa.',
-        })}</p>
-        <Link className="note-link" to="/photographie/portrait-of-a-genius">Portrait of a Genius <span aria-hidden="true">↗</span></Link>
+        <span className="archive-label">01 / {t({ fr: 'Série photographique', en: 'Photographic series' })}</span>
+        <h2 id="opening-title">Portrait of<br />a Genius.</h2>
+        <p>{t({ fr: 'Femi et Sica Kidjo sont de retour à Cotonou. Shawn les retrouve dans les rues d’Akpakpa, là où la ville reste présente dans chaque portrait.', en: 'Femi and Sica Kidjo are back in Cotonou. Shawn meets them in the streets of Akpakpa, where the city remains present in every portrait.' })}</p>
+        <p>{t({ fr: 'La série se poursuit avec Lady Donli pendant sa résidence musicale. Ici, le portrait ne coupe pas le sujet de son passage : il garde la chaleur, les murs, les arbres et les rencontres autour de lui.', en: 'The series continues with Lady Donli during her music residency. Here, portraiture does not separate a subject from their stay: it retains the heat, walls, trees and encounters around them.' })}</p>
+        <Link className="note-link" to="/photographie/portrait-of-a-genius">{t({ fr: 'Lire et voir la série complète', en: 'Read and view the complete series' })} <span aria-hidden="true">↗</span></Link>
       </div>
     </section>
 
@@ -51,6 +47,7 @@ export default function Home() {
               <h3>{t(photo.title).replace(' — I', '')}</h3>
               <p>{t(photo.place)} · {photo.year}</p>
               <p>{t(photo.context)}</p>
+              {photo.project ? <Link className="note-link" to={photo.project.href}>{t(photo.project.title)} ↗</Link> : null}
             </div>
           </figcaption>
         </figure>)}
