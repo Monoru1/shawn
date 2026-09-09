@@ -25,7 +25,7 @@ export default function Home() {
         <figcaption>{t(kidjo.place)} · 2026</figcaption>
       </figure>
       <div className="opening-note">
-        <span className="archive-label">01 / {t({ fr: 'Série photographique', en: 'Photographic series' })}</span>
+        <span className="archive-label">{t({ fr: 'Série photographique', en: 'Photographic series' })}</span>
         <h2 id="opening-title">Portrait of<br />a Genius.</h2>
         <p>{t({ fr: 'Femi et Sica Kidjo sont de retour à Cotonou. Shawn les retrouve dans les rues d’Akpakpa, là où la ville reste présente dans chaque portrait.', en: 'Femi and Sica Kidjo are back in Cotonou. Shawn meets them in the streets of Akpakpa, where the city remains present in every portrait.' })}</p>
         <p>{t({ fr: 'La série se poursuit avec Lady Donli pendant sa résidence musicale. Ici, le portrait ne coupe pas le sujet de son passage : il garde la chaleur, les murs, les arbres et les rencontres autour de lui.', en: 'The series continues with Lady Donli during her music residency. Here, portraiture does not separate a subject from their stay: it retains the heat, walls, trees and encounters around them.' })}</p>
@@ -39,10 +39,10 @@ export default function Home() {
         <Link to="/photographie">{t(e.photography)} ↗</Link>
       </header>
       <div className="encounter-pair">
-        {[photographs[1], photographs[3]].map((photo, index) => <figure key={photo.id}>
+        {[photographs[1], photographs[3]].map(photo => <figure key={photo.id}>
           <Link to={`/photographie?image=${photo.id}`}><PhotoImage photo={photo} sizes="(max-width: 760px) 85vw, 38vw" /></Link>
           <figcaption>
-            <span className="archive-label">0{index + 2}</span>
+            <span className="archive-label">{t({ fr: 'Photographie', en: 'Photography' })}</span>
             <div>
               <h3>{t(photo.title).replace(' — I', '')}</h3>
               <p>{t(photo.place)} · {photo.year}</p>
@@ -70,7 +70,7 @@ export default function Home() {
 
     <section className="ongoing-work">
       <div>
-        <span className="archive-label">04 / {t({ fr: 'Recherche en cours', en: 'Ongoing work' })}</span>
+        <span className="archive-label">{t({ fr: 'Recherche en cours', en: 'Ongoing work' })}</span>
         <h2>Enchantresse</h2>
         <p>{t({
           fr: 'Rituel, nature, visible et invisible. Une recherche que Shawn souhaite prolonger en installation, en performance et au cinéma.',

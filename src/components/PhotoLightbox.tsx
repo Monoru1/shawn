@@ -58,13 +58,12 @@ export default function PhotoLightbox({ photos, index, onChange, onClose }: Prop
         <button type="button" className="lightbox-arrow" aria-label={t(e.next)} onClick={() => step(1)} disabled={photos.length < 2}>→</button>
       </div>
       <div className="lightbox-bottom">
-        <div aria-live="polite" aria-atomic="true"><span className="micro">{String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span><div className="lightbox-caption"><p>{t(photo.title)}</p><span>{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><small>{t(photo.context)}</small></div></div>
+        <div aria-live="polite" aria-atomic="true"><div className="lightbox-caption"><p>{t(photo.title)}</p><span>{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><small>{t(photo.context)}</small><em>{t({ fr: 'Rester un instant : le lieu continue de parler après le regard.', en: 'Stay a little: the place keeps speaking after the first look.' })}</em></div></div>
         <span className="micro lightbox-help">{t(e.keyboard)}</span>
       </div>
       <div className="lightbox-album" aria-label={t({ fr: 'Album de la série', en: 'Series album' })}>
         {photos.map((item, itemIndex) => <button type="button" key={item.id} className={itemIndex === index ? 'is-current' : ''} aria-label={`${t({ fr: 'Voir', en: 'View' })} ${t(item.title)}`} aria-current={itemIndex === index ? 'true' : undefined} onClick={() => onChange(itemIndex)}>
           <PhotoImage photo={item} eager={itemIndex === index} sizes="120px" />
-          <span>{String(itemIndex + 1).padStart(2, '0')}</span>
         </button>)}
       </div>
     </dialog>, document.body,

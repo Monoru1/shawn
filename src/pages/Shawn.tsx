@@ -10,7 +10,7 @@ export default function Shawn() {
   const { t } = useI18n()
   const chapters = [
     {
-      number: '01',
+      number: { fr: 'Origine', en: 'Origin' },
       title: { fr: 'Les images ont d’abord été des traces de famille.', en: 'Images began as family traces.' },
       paragraphs: [
         { fr: 'Enfant à Cotonou, Shawn regarde les photographies de fêtes et de bals masqués conservées par ses parents. Il y apprend que l’image ne sert pas seulement à montrer : elle garde une présence, un vêtement, une lumière, un moment que l’on peut retrouver.', en: 'Growing up in Cotonou, Shawn looked through his parents’ photographs of celebrations and masked balls. There he learned that an image does more than show: it retains a presence, a garment, a light, a moment one can return to.' },
@@ -18,7 +18,7 @@ export default function Shawn() {
       ],
     },
     {
-      number: '02',
+      number: { fr: 'Lieu', en: 'Place' },
       title: { fr: 'Faire du lieu un personnage.', en: 'Making place a character.' },
       paragraphs: [
         { fr: 'Dans ses portraits, le cadre n’est pas un fond neutre. Les rues d’Akpakpa entourent Femi et Sica Kidjo à leur retour à Cotonou ; la ville accompagne aussi la rencontre avec Lady Donli pendant sa résidence musicale. Le portrait reste lié au temps et au lieu où il est né.', en: 'In his portraits, the frame is not a neutral backdrop. The streets of Akpakpa surround Femi and Sica Kidjo on their return to Cotonou; the city also accompanies his meeting with Lady Donli during her music residency. The portrait remains bound to the time and place of its making.' },
@@ -26,7 +26,7 @@ export default function Shawn() {
       ],
     },
     {
-      number: '03',
+      number: { fr: 'Récit', en: 'Narrative' },
       title: { fr: 'Passer de l’image fixe au récit.', en: 'Moving from a still image to a narrative.' },
       paragraphs: [
         { fr: 'Photographe et cinéaste au même niveau, Shawn fait circuler les mêmes questions d’un médium à l’autre : mémoire, identité, environnement, et le moment précis où un lieu devient récit. Le cinéma lui permet de rester plus longtemps auprès de ses sujets ; la photographie en isole une intensité.', en: 'Photographer and filmmaker on equal footing, Shawn carries the same questions from one medium to the other: memory, identity, environment, and the precise moment when a place becomes a story. Cinema lets him stay longer with his subjects; photography isolates an intensity.' },
@@ -34,7 +34,7 @@ export default function Shawn() {
       ],
     },
     {
-      number: '04',
+      number: { fr: 'Transmission', en: 'Transmission' },
       title: { fr: 'Construire un espace pour les récits.', en: 'Building a space for stories.' },
       paragraphs: [
         { fr: 'Kerawa Studio est la structure fondée par Shawn pour produire et accompagner des récits africains au cinéma. Ce n’est pas une signature qui remplace son travail d’auteur : c’est l’outil collectif qui permet à certains projets d’exister, de circuler et de rencontrer leur public.', en: 'Kerawa Studio is the structure Shawn founded to produce and support African stories in cinema. It is not a signature replacing his authorship: it is a collective tool that lets certain projects exist, travel and meet an audience.' },
@@ -60,16 +60,16 @@ export default function Shawn() {
     </section>
 
     <section className="artist-chapters" aria-label={t({ fr: 'Parcours', en: 'Practice' })}>
-      {chapters.map(chapter => <article className="artist-chapter" key={chapter.number}>
-        <span className="archive-label">{chapter.number}</span>
+      {chapters.map(chapter => <article className="artist-chapter" key={chapter.number.fr}>
+        <span className="archive-label">{t(chapter.number)}</span>
         <div><h2>{t(chapter.title)}</h2>{chapter.paragraphs.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}</div>
       </article>)}
     </section>
 
     <section className="artist-works" aria-labelledby="artist-works-title">
       <div><span className="archive-label">Sélection</span><h2 id="artist-works-title">{t({ fr: 'Voir les projets en images.', en: 'See the projects in images.' })}</h2></div>
-      <div>{photos.map((work, index) => <Link key={work.slug} to={pathFor(work)}>
-        <span>{String(index + 1).padStart(2, '0')}</span><strong>{t(work.title)}</strong><small>{t(work.location)} · {work.year}</small><i aria-hidden="true">↗</i>
+      <div>{photos.map(work => <Link key={work.slug} to={pathFor(work)}>
+        <strong>{t(work.title)}</strong><small>{t(work.location)} · {work.year}</small><i aria-hidden="true">↗</i>
       </Link>)}</div>
     </section>
 

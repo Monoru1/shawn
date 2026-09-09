@@ -28,12 +28,12 @@ export default function Photography() {
     <Seo title={t(e.galleryTitle)} description={t(e.galleryIntro)} />
     <header className="gallery-heading">
       <div className="section-label micro"><span>Shawn N. Hounkpatin</span><span>{t(e.location)}</span></div>
-      <h1>{t(e.galleryTitle)}<sup>({String(photographs.length).padStart(2, '0')})</sup></h1>
+      <h1>{t(e.galleryTitle)}</h1>
       <div className="gallery-intro"><p>{t(e.galleryIntro)}</p><span className="micro">{t(e.galleryNote)}</span></div>
     </header>
     <div className="gallery-toolbar">
       <div className="gallery-filters" role="group" aria-label={t(e.filters)}>
-        {filters.map(key => <button key={key} type="button" aria-pressed={filter === key} onClick={() => { closeImage(); setFilter(key) }}>{key === 'projects' ? t({ fr: 'Projets', en: 'Projects' }) : t(e[key])}<sup>{key === 'all' ? photographs.length : key === 'projects' ? projectWorks.length : photographs.filter(photo => photo.category === key).length}</sup></button>)}
+        {filters.map(key => <button key={key} type="button" aria-pressed={filter === key} onClick={() => { closeImage(); setFilter(key) }}>{key === 'projects' ? t({ fr: 'Projets', en: 'Projects' }) : t(e[key])}</button>)}
       </div>
       {!isProjectView && <div className="gallery-layout-control" role="group" aria-label={t(e.layout)}>
         <button type="button" aria-pressed={layout === 'editorial'} onClick={() => setLayout('editorial')}>{t(e.editorialView)}</button>
@@ -44,7 +44,7 @@ export default function Photography() {
     <p className="sr-only" role="status">{isProjectView ? projectWorks.length : visible.length} {t(isProjectView ? { fr: 'projets', en: 'projects' } : visible.length === 1 ? e.image : e.images)}</p>
     {isProjectView ? <div className="photo-project-grid">
       {projectWorks.map((work, index) => <article className="photo-project-card" key={work.slug}>
-        <Link to={pathFor(work)}><img src={work.cover.src} srcSet={work.cover.srcSet} sizes="(max-width: 760px) 100vw, 50vw" width={work.cover.width} height={work.cover.height} alt={t(work.cover.alt)} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} /><span className="photo-project-card__count">0{index + 1}</span></Link>
+        <Link to={pathFor(work)}><img src={work.cover.src} srcSet={work.cover.srcSet} sizes="(max-width: 760px) 100vw, 50vw" width={work.cover.width} height={work.cover.height} alt={t(work.cover.alt)} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} /></Link>
         <div><span className="photo-caption-place">{t(work.location)} · {work.year}</span><h2>{t(work.title)}</h2><p>{t(work.statement)}</p><Link className="photo-caption-project" to={pathFor(work)}>{t({ fr: 'Lire le projet', en: 'Read the project' })} ↗</Link></div>
       </article>)}
     </div> : <div className={`photo-grid photo-grid--${layout}`}>
@@ -56,7 +56,7 @@ export default function Photography() {
         <figcaption><span className="photo-caption-title">{t(photo.title)}</span><span className="photo-caption-place">{t(photo.place)}{photo.year && ` — ${photo.year}`}</span><span className="photo-caption-context">{t(photo.context)}</span>{photo.project ? <Link className="photo-caption-project" to={photo.project.href}>{t({ fr: 'Lire la série', en: 'Read the series' })} · {t(photo.project.title)} ↗</Link> : null}</figcaption>
       </figure>)}
     </div>}
-    <div className="gallery-end micro"><span>© Shawn N. Hounkpatin</span><span>{String(isProjectView ? projectWorks.length : visible.length).padStart(2, '0')} {t(isProjectView ? { fr: 'projets', en: 'projects' } : visible.length === 1 ? e.image : e.images)}</span></div>
+    <div className="gallery-end micro"><span>© Shawn N. Hounkpatin</span><span>{t({ fr: 'Prendre le temps de regarder', en: 'Take time to look' })}</span></div>
     {active >= 0 && <PhotoLightbox photos={visible} index={active} onChange={selectImage} onClose={closeImage} />}
   </main>
 }
